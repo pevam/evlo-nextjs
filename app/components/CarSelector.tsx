@@ -95,12 +95,13 @@ export default function CarSelector({ onSelect, value }: CarSelectorProps) {
         </div>
       )}
       filterOption={(option: any, inputValue: string) => {
+        if (!option?.data || !inputValue) return true;
         const searchText = inputValue.toLowerCase();
         const { make, model } = option.data;
         return (
-          make.toLowerCase().includes(searchText) ||
-          model.toLowerCase().includes(searchText) ||
-          `${make} ${model}`.toLowerCase().includes(searchText)
+          (make?.toLowerCase?.().includes(searchText) || false) ||
+          (model?.toLowerCase?.().includes(searchText) || false) ||
+          (`${make} ${model}`.toLowerCase().includes(searchText) || false)
         );
       }}
     />
