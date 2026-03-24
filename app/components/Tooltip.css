@@ -1,0 +1,113 @@
+.tooltip-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tooltip-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    transition: opacity 0.2s;
+}
+
+.tooltip-trigger:hover {
+    opacity: 0.7;
+}
+
+.tooltip-content {
+    position: absolute;
+    background: #1E1E1E;
+    color: white;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    white-space: normal;
+    max-width: 280px;
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: tooltipFadeIn 0.2s ease-out;
+    pointer-events: auto;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #1E1E1E;
+    transform: rotate(45deg);
+}
+
+.tooltip-top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+}
+
+.tooltip-top .tooltip-arrow {
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip-bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+.tooltip-bottom .tooltip-arrow {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip-left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+}
+
+.tooltip-left .tooltip-arrow {
+    left: auto;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.tooltip-right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+}
+
+.tooltip-right .tooltip-arrow {
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Print styles - hide tooltips in print */
+@media print {
+    .tooltip-content {
+        display: none;
+    }
+}

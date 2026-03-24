@@ -1,0 +1,24 @@
+open 152.89.234.145 21
+matevz@evlo.si
+cs,de5e?a8JT
+quote pasv
+prompt off
+cd /evlo-app
+binary
+put evlo-nextjs\package.json
+put evlo-nextjs\next.config.js
+put evlo-nextjs\tailwind.config.ts
+put evlo-nextjs\tsconfig.json
+put evlo-nextjs\postcss.config.js
+put evlo-nextjs\server.js
+put evlo-nextjs\.env.local
+put evlo-nextjs\.gitignore
+put evlo-nextjs\.next\*.*
+mput evlo-nextjs\app\*.tsx
+mput evlo-nextjs\app\*.ts
+mput evlo-nextjs\app\diagnostic\*.tsx
+mput evlo-nextjs\app\api\diagnostic\*.ts
+mput evlo-nextjs\styles\*.css
+mput evlo-nextjs\public\*.*
+mput evlo-nextjs\components\*.*
+quit

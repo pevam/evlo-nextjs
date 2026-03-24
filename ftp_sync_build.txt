@@ -1,0 +1,11 @@
+open 152.89.234.145 21
+matevz@evlo.si
+cs,de5e?a8JT
+quote pasv
+prompt off
+cd /evlo-app
+binary
+mput evlo-nextjs\.next\*.*
+mput evlo-nextjs\node_modules\*.*
+put evlo-nextjs\package-lock.json
+quit
