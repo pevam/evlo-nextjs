@@ -285,22 +285,22 @@ export default function DiagnosticPage() {
 
             <div className="highlights-grid">
               <div className="highlight-card" style={{ gridColumn: 'span 3', background: 'rgb(248, 249, 250)', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '2px solid rgb(16, 185, 129)' }}>
-                <div className="highlight-icon">💶</div>
+                <div className="highlight-icon"></div>
                 <div className="highlight-value">{result.batteryValue} €</div>
                 <div className="highlight-label">Vrednost baterije</div>
               </div>
               <div className="highlight-card">
-                <div className="highlight-icon">🔋</div>
+                <div className="highlight-icon"></div>
                 <div className="highlight-value">{result.realRange} km</div>
                 <div className="highlight-label">Doseg</div>
               </div>
               <div className="highlight-card">
-                <div className="highlight-icon">❄️</div>
+                <div className="highlight-icon"></div>
                 <div className="highlight-value">{result.winterRange} km</div>
                 <div className="highlight-label">Zimski doseg</div>
               </div>
               <div className="highlight-card">
-                <div className="highlight-icon">☀️</div>
+                <div className="highlight-icon"></div>
                 <div className="highlight-value">{result.summerRange} km</div>
                 <div className="highlight-label">Poletni doseg</div>
               </div>
@@ -539,10 +539,10 @@ export default function DiagnosticPage() {
             <span>analiza</span>
           </h2>
 
-          <div className="ai-scan-box">
+            <div className="ai-scan-box">
             <div className="ai-scan-title">EVLO AI Vision</div>
             <div className="ai-scan-desc">Naloži sliko za avtomatski vnos podatkov</div>
-            <button className="ai-btn">Skeniraj armaturno ploščo</button>
+            <button className="ai-btn">Skeniraj</button>
           </div>
 
           <div className="form-group">
