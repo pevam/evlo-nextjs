@@ -514,7 +514,7 @@ export default function DiagnosticPage() {
             <button 
               className="evlo-btn-pill"
               onClick={handlePrintClick}
-              style={{ marginTop: '20px', background: 'linear-gradient(135deg, #B8EC3F 0%, #9AE500 100%)', color: '#1E1E1E', fontWeight: 'bold' }}
+              style={{ marginTop: '20px', background: '#005258', color: '#FFFFFF', fontWeight: 'bold' }}
             >
               📄 Prenesi EVLO Certifikat (PDF)
             </button>
