@@ -274,8 +274,8 @@ export default function DiagnosticPage() {
                 <div className="big-unit">SoH (Zdravje Baterije)</div>
               </div>
               <div className="score-details">
-                <div className="score-details-title">Diagnostični status: 
-                  <span style={{ color: 'rgba(158, 225, 0, 1)' }}>
+              <div className="score-details-title">Diagnostični status: 
+                  <span style={{ color: '#00E58E' }}>
                     {parseFloat(result.score) >= 94 ? ' Optimalno' : parseFloat(result.score) >= 85 ? ' Skladno' : ' Degradacija'}
                   </span>
                 </div>
