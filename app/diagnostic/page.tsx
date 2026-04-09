@@ -130,26 +130,22 @@ export default function DiagnosticPage() {
       maxSocStress = (parseFloat(maxSoC) - 1.0) * 1.5;
     }
 
-    // Phase 11: Non-linear physics with climate and chemistry factors
-    let alphaFactor = (car.baseDegration + (climateStress > 0 ? climateStress : 0) + maxSocStress) * 2.8;
-    
-    // Apply temperature coefficient based on climate region
+    // Phase 12: Ultra-refined non-linear physics
+    // Climate coefficient
     let temperatureCoefficient = 1.0;
-    if (climateRegion === 'hot') temperatureCoefficient = 1.2; // 20% faster degradation in hot climates
-    if (climateRegion === 'cold') temperatureCoefficient = 0.95; // 5% slower in cold climates
+    if (climateRegion === 'hot') temperatureCoefficient = 1.2; // Hot climates: +20% degradation
+    if (climateRegion === 'cold') temperatureCoefficient = 0.95; // Cold climates: -5% degradation
     
-    // Apply LFP chemistry reduction (20% more stable)
+    // Chemistry factor (LFP more stable)
     let chemistryFactor = 1.0;
-    if (car.chemistry === 'LFP') chemistryFactor = 0.8;
+    if (car.chemistry === 'LFP') chemistryFactor = 0.8; // LFP: 20% less calendar degradation
     
-    // Non-linear calendar loss: higher in first year (SEI layer formation)
+    // Non-linear calendar loss: Year 1 fixed (SEI formation), then linear
     let calendarLoss = 0;
     if (age <= 1) {
-      // First year: 3-4% fixed loss
-      calendarLoss = 3.5 * chemistryFactor;
+      calendarLoss = 3.5 * chemistryFactor; // Year 1: Fixed 3.5% loss
     } else {
-      // After first year: standard log degradation
-      calendarLoss = (3.5 * chemistryFactor) + (alphaFactor * temperatureCoefficient * Math.log(age));
+      calendarLoss = 3.5 * chemistryFactor + (1.5 * temperatureCoefficient * (age - 1)); // Year 2+: 1.5% per year
     }
 
     const cycles = (km * (car.efficiency / 100)) / car.batteryCapacity;
@@ -169,7 +165,7 @@ export default function DiagnosticPage() {
 
     let totalLoss = calendarLoss + cyclicLoss;
     const score = Math.max(0, Math.min(100, 100 - totalLoss));
-    const annLoss = age > 0.5 ? (totalLoss / age) : alphaFactor * Math.log(2);
+    const annLoss = age > 0.5 ? (totalLoss / age) : (3.5 * chemistryFactor * temperatureCoefficient * Math.log(2));
 
     const costEstimate = 25000; // Default estimate per kWh * capacity
     const realRange = Math.round(car.wltpRange * (score / 100));
