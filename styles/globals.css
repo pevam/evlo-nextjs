@@ -3,12 +3,15 @@
     --evlo-volt-hover: rgba(142, 202, 0, 1);
     --evlo-dark: #1E1E1E;
     --evlo-border: #EAEAEA;
-    --evlo-bg: #f8f8f8;
+    --evlo-bg: #F8F9FA;
     --evlo-red: #ff4d4d;
     --evlo-blue: #3182CE;
     --evlo-orange: #F6AD55;
     --evlo-text-main: #333333;
     --evlo-text-muted: #777777;
+    --evlo-primary: #005258;
+    --evlo-gradient: linear-gradient(90deg, #00E58E 0%, #B8EC3F 100%);
+    --evlo-bubble: #F1F3F5;
 }
 
 * {

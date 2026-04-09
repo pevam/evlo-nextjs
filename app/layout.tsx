@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Gabarito } from "next/font/google";
 import "../styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const gabarito = Gabarito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "EVLO - EV Battery Diagnostics",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={gabarito.className}>
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
           {children}
         </div>
