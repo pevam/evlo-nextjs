@@ -98,15 +98,23 @@ h2 span {
 input.evlo-field,
 select.evlo-field {
     width: 100% !important;
-    background: #F9F9F9 !important;
-    border: 1px solid var(--evlo-border) !important;
-    border-radius: 16px !important;
-    padding: 16px !important;
+    background: linear-gradient(90deg, #F1F3F5 0%, #F1F3F5 100%) !important;
+    border: none !important;
+    border-radius: 200px !important;
+    padding: 12px 16px !important;
     color: var(--evlo-dark) !important;
     font-family: 'Gabarito', sans-serif !important;
     font-size: 1rem !important;
     appearance: none !important;
     box-sizing: border-box !important;
+    height: 40px !important;
+}
+
+select.evlo-field {
+    background: #F1F3F5 !important;
+    border-radius: 16px !important;
+    height: auto !important;
+    padding: 12px 16px !important;
 }
 
 .file-upload-wrapper {
@@ -212,8 +220,8 @@ select.evlo-field {
 }
 
 .ai-btn {
-    background: var(--evlo-volt);
-    color: var(--evlo-dark);
+    background: #005258;
+    color: #FFFFFF;
     border: none;
     padding: 12px 24px;
     border-radius: 100px;
@@ -221,11 +229,13 @@ select.evlo-field {
     cursor: pointer;
     transition: 0.3s;
     font-family: 'Gabarito';
+    font-size: 1rem;
 }
 
 .ai-btn:hover {
+    background: #004047;
+    color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(158, 225, 0, 0.3);
 }
 
 .hw-toggle-box {
@@ -255,8 +265,8 @@ select.evlo-field {
 }
 
 .evlo-btn-pill {
-    background: var(--evlo-volt);
-    color: var(--evlo-dark);
+    background: #005258;
+    color: #FFFFFF;
     width: 100%;
     padding: 22px;
     border: none;
@@ -268,12 +278,14 @@ select.evlo-field {
     text-align: center;
     margin-top: 20px;
     text-transform: uppercase;
+    font-family: 'Gabarito';
 }
 
 .evlo-btn-pill:hover {
-    background: var(--evlo-volt-hover);
+    background: #004047;
+    color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(158, 225, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 82, 88, 0.3);
 }
 
 #result-screen {
