@@ -25,7 +25,7 @@ export default function MarketPositionGauge({ marketPosition, title = "Tržni po
         marginBottom: '15px',
         color: '#1E1E1E'
       }}>
-        📊 {title}
+        {title}
       </h4>
 
       {/* Market Position Label */}
@@ -47,24 +47,23 @@ export default function MarketPositionGauge({ marketPosition, title = "Tržni po
         </span>
       </div>
 
-      {/* Gauge Background */}
+      {/* Gauge Background with EVLO Gradient */}
       <div style={{
-        background: 'linear-gradient(90deg, #dc2626 0%, #f97316 20%, #eab308 50%, #22c55e 80%, #10b981 100%)',
-        height: '30px',
-        borderRadius: '8px',
+        background: '#F1F3F5',
+        height: '16px',
+        borderRadius: '200px',
         position: 'relative',
         overflow: 'hidden',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         marginBottom: '10px'
       }}>
-        {/* Overlay for non-achieved portion */}
+        {/* Gradient Fill */}
         <div style={{
           position: 'absolute',
-          right: 0,
+          left: 0,
           top: 0,
           height: '100%',
-          width: `${100 - gaugeWidth}%`,
-          background: 'rgba(255,255,255,0.4)',
+          width: `${gaugeWidth}%`,
+          background: 'linear-gradient(90deg, #00E58E 0%, #B8EC3F 100%)',
           transition: 'width 0.3s ease'
         }} />
         
@@ -76,7 +75,7 @@ export default function MarketPositionGauge({ marketPosition, title = "Tržni po
           transform: 'translate(-50%, -50%)',
           color: '#1E1E1E',
           fontWeight: 'bold',
-          fontSize: '14px',
+          fontSize: '12px',
           zIndex: 10
         }}>
           {percentile}%
@@ -108,27 +107,27 @@ export default function MarketPositionGauge({ marketPosition, title = "Tržni po
       }}>
         {marketPosition.percentile >= 80 && (
           <>
-            <strong style={{ color: marketPosition.color }}>💎 Odlično stanje:</strong> Ta vozilo je v zelo dobrem stanju v primerjavi s podobnimi vozili na trgu. Baterija kaže manjšo degradacijo kot povprečna vozila te starosti in kilometraže.
+            <strong style={{ color: marketPosition.color }}>Odlično stanje:</strong> Ta vozilo je v zelo dobrem stanju v primerjavi s podobnimi vozili na trgu. Baterija kaže manjšo degradacijo kot povprečna vozila te starosti in kilometraže.
           </>
         )}
         {marketPosition.percentile >= 60 && marketPosition.percentile < 80 && (
           <>
-            <strong style={{ color: marketPosition.color }}>✅ Dobro stanje:</strong> Stanje baterije je nad povprečjem. Vozilo je primerna izbira za nakup s poudarkom na dolgoročni zanesljivosti.
+            <strong style={{ color: marketPosition.color }}>Dobro stanje:</strong> Stanje baterije je nad povprečjem. Vozilo je primerna izbira za nakup s poudarkom na dolgoročni zanesljivosti.
           </>
         )}
         {marketPosition.percentile >= 40 && marketPosition.percentile < 60 && (
           <>
-            <strong style={{ color: marketPosition.color }}>➖ Povprečno stanje:</strong> Baterija je v povprečnem stanju za to starost in kilometražo. Tipično vozilo na trgu.
+            <strong style={{ color: marketPosition.color }}>Povprečno stanje:</strong> Baterija je v povprečnem stanju za to starost in kilometražo. Tipično vozilo na trgu.
           </>
         )}
         {marketPosition.percentile >= 20 && marketPosition.percentile < 40 && (
           <>
-            <strong style={{ color: marketPosition.color }}>👎 Slabše od povprečja:</strong> Stanje baterije je pod povprečjem. Razmislite o dodatni inspeksiji ali zmanjšanju cene.
+            <strong style={{ color: marketPosition.color }}>Slabše od povprečja:</strong> Stanje baterije je pod povprečjem. Razmislite o dodatni inspeksiji ali zmanjšanju cene.
           </>
         )}
         {marketPosition.percentile < 20 && (
           <>
-            <strong style={{ color: marketPosition.color }}>⚠️ Opozorilo:</strong> Baterija je v slabem stanju. Priporočljiv je pregled specialista pred nakupom.
+            <strong style={{ color: marketPosition.color }}>Opozorilo:</strong> Baterija je v slabem stanju. Priporočljiv je pregled specialista pred nakupom.
           </>
         )}
       </div>

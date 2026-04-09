@@ -51,7 +51,7 @@ export default function RangeProjectionChart({
   return (
     <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '12px', marginBottom: '30px' }}>
       <h5 style={{ marginBottom: '15px', color: '#1E1E1E', fontWeight: '600' }}>
-        🗺️ Projekcija dosega skozi leta (Zima/Poletje)
+        Projekcija dosega skozi leta (Zima/Poletje)
       </h5>
       <ResponsiveContainer width="100%" height={350}>
         <LineChart data={projectionData}>
@@ -128,7 +128,7 @@ export default function RangeProjectionChart({
         color: '#666',
         lineHeight: '1.6'
       }}>
-        <strong>💡 Interpretacija:</strong> Graf prikazuje, kako se bo doseg vašega vozila zmanjševal v prihodnjih letih
+        <strong>Interpretacija:</strong> Graf prikazuje, kako se bo doseg vašega vozila zmanjševal v prihodnjih letih
         zaradi padca zdravja baterije (SoH). Rdeči črta predstavlja WLTP (tovarniški pogoji), zelena črta poletne 
         pogoje (+20°C), modra črta pa zimske pogoje (-10°C s topljenjem baterije). Povprečni letni padec SoH: <strong>{annLossPercent.toFixed(2)}%</strong>
       </div>
