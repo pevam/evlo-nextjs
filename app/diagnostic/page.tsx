@@ -9,12 +9,38 @@ import RangeProjectionChart from '@/app/components/RangeProjectionChart';
 import QRCodeVerify from '@/app/components/QRCodeVerify';
 import EVLOGradeBadge from '@/app/components/EVLOGradeBadge';
 import CarSelector from '@/app/components/CarSelector';
+import MarketPositionGauge from '@/app/components/MarketPositionGauge';
 import { EV_DATABASE, EVDatabaseEntry } from '@/app/data/ev-database';
+import { getMarketPosition, getPremiumBadgeText, type MarketPosition } from '@/app/utils/marketBenchmark';
 
 declare global {
   interface Window {
     Chart: any;
   }
+}
+
+interface DiagnosticResult {
+  car: string;
+  year: number;
+  km: number;
+  age: string;
+  chemistry: string;
+  fleet: number;
+  score: string;
+  annLoss: string;
+  realRange: number;
+  winterRange: number;
+  summerRange: number;
+  savings: number;
+  isWarrantied: string;
+  eol: number;
+  wltp: number;
+  lostRange: number;
+  batteryValue: string;
+  lostValue: string;
+  cycles: number;
+  marketPosition: MarketPosition;
+  premiumBadge: string | null;
 }
 
 // EV database now imported from app/data/ev-database.ts
@@ -48,7 +74,7 @@ export default function DiagnosticPage() {
   const [avgElevation, setAvgElevation] = useState('100');
   const [hasHeatPump, setHasHeatPump] = useState(true);
   const [hasV2L, setHasV2L] = useState(false);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<DiagnosticResult | null>(null);
   const [reportId, setReportId] = useState('');
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [collectedEmail, setCollectedEmail] = useState('');
@@ -133,6 +159,9 @@ export default function DiagnosticPage() {
     const eol = Math.round(curYear + Math.max(1, (score - 70) / annLoss));
 
     const lossEuro = Math.round(costEstimate * ((100 - score) / 100));
+    
+    // Calculate market position
+    const marketPosition = getMarketPosition(score, Math.max(0.3, curYear - year), km);
 
     setResult({
       car: `${car.make} ${car.model}`,
@@ -153,7 +182,9 @@ export default function DiagnosticPage() {
       lostRange: car.wltpRange - realRange,
       batteryValue: (costEstimate - lossEuro).toLocaleString('sl-SI'),
       lostValue: lossEuro.toLocaleString('sl-SI'),
-      cycles: Math.round(cycles)
+      cycles: Math.round(cycles),
+      marketPosition: marketPosition,
+      premiumBadge: getPremiumBadgeText(marketPosition)
     });
 
     setReportId('EVLO-' + Math.random().toString(36).substr(2, 6).toUpperCase());
@@ -271,6 +302,33 @@ export default function DiagnosticPage() {
                 <span className="sub" style={{ color: '#3182CE' }}>Letni padec: {result.annLoss}%</span>
               </div>
             </div>
+
+            {/* Market Position Gauge */}
+            <MarketPositionGauge 
+              marketPosition={result.marketPosition}
+              title="Tržni položaj vozila"
+            />
+
+            {/* Premium Badge for PDF */}
+            {result.premiumBadge && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(184, 236, 63, 0.1) 0%, rgba(158, 225, 0, 0.1) 100%)',
+                border: '2px solid #B8EC3F',
+                borderRadius: '12px',
+                padding: '20px',
+                marginBottom: '30px',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '1.2rem',
+                  fontWeight: 'bold',
+                  color: '#1E1E1E',
+                  lineHeight: '1.6'
+                }}>
+                  {result.premiumBadge}
+                </div>
+              </div>
+            )}
 
             <div style={{ marginTop: '40px', marginBottom: '40px' }}>
               <h4 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '20px', color: '#1E1E1E' }}>📊 Interaktivne analize</h4>
