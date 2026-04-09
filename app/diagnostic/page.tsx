@@ -384,7 +384,7 @@ export default function DiagnosticPage() {
                       formatter={(value: any) => `${Number(value).toFixed(1)}%`}
                     />
                     <ReferenceLine y={70} stroke="#ff4d4d" strokeDasharray="5 5" label={{ value: 'Garancija meja (70%)', fill: '#ff4d4d' }} />
-                    <Line type="monotone" dataKey="soh" stroke="#B8EC3F" strokeWidth={3} dot={{ fill: '#B8EC3F' }} name="SoH %" />
+                    <Line type="monotone" dataKey="soh" stroke="#00E58E" strokeWidth={3} dot={{ fill: '#00E58E' }} name="SoH %" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -444,9 +444,9 @@ export default function DiagnosticPage() {
                       formatter={(value) => `${value} km`}
                     />
                     <Legend />
-                    <Bar dataKey="Idealno" fill="#9AE500" name="Idealno (WLTP)" />
-                    <Bar dataKey="Poletje" fill="#FFB84D" name="Poletje (80%)" />
-                    <Bar dataKey="Zima" fill="#4DA6FF" name="Zima (70%)" />
+                    <Bar dataKey="Idealno" fill="#00E58E" name="Idealno (WLTP)" />
+                    <Bar dataKey="Poletje" fill="#005258" name="Poletje (80%)" />
+                    <Bar dataKey="Zima" fill="#67C06C" name="Zima (70%)" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

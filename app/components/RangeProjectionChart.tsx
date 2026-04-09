@@ -80,13 +80,13 @@ export default function RangeProjectionChart({
             iconType="line"
           />
           
-          {/* WLTP Range - Grey/Neutral */}
+          {/* WLTP Range - Neutral */}
           <Line 
             type="monotone" 
             dataKey="WLTP" 
-            stroke="#999999" 
+            stroke="#005258" 
             strokeWidth={2.5}
-            dot={{ fill: '#999999', r: 4 }}
+            dot={{ fill: '#005258', r: 4 }}
             activeDot={{ r: 6 }}
             name="WLTP/Tovarniški"
             isAnimationActive={false}
@@ -96,21 +96,21 @@ export default function RangeProjectionChart({
           <Line 
             type="monotone" 
             dataKey="Summer" 
-            stroke="#B8EC3F" 
+            stroke="#00E58E" 
             strokeWidth={2.5}
-            dot={{ fill: '#B8EC3F', r: 4 }}
+            dot={{ fill: '#00E58E', r: 4 }}
             activeDot={{ r: 6 }}
             name="Poletni doseg (80%)"
             isAnimationActive={false}
           />
           
-          {/* Winter Range - Ice Blue */}
+          {/* Winter Range - Green */}
           <Line 
             type="monotone" 
             dataKey="Winter" 
-            stroke="#4DA6FF" 
+            stroke="#67C06C" 
             strokeWidth={2.5}
-            dot={{ fill: '#4DA6FF', r: 4 }}
+            dot={{ fill: '#67C06C', r: 4 }}
             activeDot={{ r: 6 }}
             name="Zimski doseg (70%)"
             isAnimationActive={false}
