@@ -2,16 +2,19 @@
     --evlo-volt: rgba(158, 225, 0, 1);
     --evlo-volt-hover: rgba(142, 202, 0, 1);
     --evlo-dark: #1E1E1E;
-    --evlo-border: #EAEAEA;
-    --evlo-bg: #F8F9FA;
+    --evlo-border: #E9ECEF;
+    --evlo-bg: #FFFFFF;
     --evlo-red: #ff4d4d;
-    --evlo-blue: #3182CE;
+    --evlo-blue: #005258;
     --evlo-orange: #F6AD55;
-    --evlo-text-main: #333333;
-    --evlo-text-muted: #777777;
+    --evlo-text-main: #1E1E1E;
+    --evlo-text-muted: #1E1E1E;
     --evlo-primary: #005258;
+    --evlo-primary-text: #FFFFFF;
+    --evlo-accent: #00E58E;
     --evlo-gradient: linear-gradient(90deg, #00E58E 0%, #B8EC3F 100%);
     --evlo-bubble: #F1F3F5;
+    --evlo-neutral: #1E1E1E;
 }
 
 * {
@@ -668,10 +671,10 @@ select.evlo-field {
 }
 
 .b2b-input-group button {
-    background: var(--evlo-dark);
-    color: var(--evlo-volt);
+    background: var(--evlo-primary);
+    color: var(--evlo-primary-text);
     border: none;
-    border-radius: 100px;
+    border-radius: 12px;
     padding: 0 30px;
     font-weight: 600;
     font-size: 1rem;
@@ -682,7 +685,8 @@ select.evlo-field {
 }
 
 .b2b-input-group button:hover {
-    background: #333;
+    background: #004047;
+    color: var(--evlo-primary-text);
 }
 
 .b2b-input-group button:disabled {
