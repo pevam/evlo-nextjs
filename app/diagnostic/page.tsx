@@ -569,7 +569,7 @@ export default function DiagnosticPage() {
             <div>
               <label className="form-label">Slika vozila</label>
               <div className="file-upload-wrapper">
-                <div className="btn-file-upload">📷 Naloži sliko</div>
+                <div className="btn-file-upload">Naloži sliko</div>
                 <input 
                   type="file" 
                   accept="image/*"
@@ -680,9 +680,9 @@ export default function DiagnosticPage() {
             <div>
               <label className="form-label">Podnebje (Regija)</label>
               <select className="evlo-field" value={climateRegion} onChange={(e) => setClimateRegion(e.target.value)}>
-                <option value="moderate">🌍 Zmerno (Slovenija)</option>
-                <option value="hot">☀️ Vroče (Sredozemlje)</option>
-                <option value="cold">❄️ Hladno (Skandinavija)</option>
+                <option value="moderate">Zmerno (Slovenija)</option>
+                <option value="hot">Vroče (Sredozemlje)</option>
+                <option value="cold">Hladno (Skandinavija)</option>
               </select>
             </div>
             <div>
@@ -694,7 +694,10 @@ export default function DiagnosticPage() {
                 max="100" 
                 value={dcChargingPercent} 
                 onChange={(e) => setDcChargingPercent(parseInt(e.target.value))}
-                style={{ cursor: 'pointer' }}
+                style={{ 
+                  cursor: 'pointer',
+                  background: 'linear-gradient(90deg, rgb(0, 229, 142) 0%, rgb(184, 236, 63) 100%)'
+                }}
               />
             </div>
           </div>
