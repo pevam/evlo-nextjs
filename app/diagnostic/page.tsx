@@ -37,7 +37,7 @@ interface DiagnosticResult {
   wltp: number;
   lostRange: number;
   batteryValue: string;
-  lostValue: string;
+  lostValue: string; 
   cycles: number;
   marketPosition: MarketPosition;
   premiumBadge: string | null;
@@ -284,7 +284,7 @@ export default function DiagnosticPage() {
             </div>
 
             <div className="highlights-grid">
-              <div className="highlight-card" style={{ gridColumn: 'span 3', border: '2px solid rgba(158, 225, 0, 1)', background: '#faffea' }}>
+              <div className="highlight-card" style={{ gridColumn: 'span 3', background: 'rgb(248, 249, 250)', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '2px solid rgb(16, 185, 129)' }}>
                 <div className="highlight-icon">💶</div>
                 <div className="highlight-value">{result.batteryValue} €</div>
                 <div className="highlight-label">Vrednost baterije</div>
@@ -333,8 +333,8 @@ export default function DiagnosticPage() {
             {/* Premium Badge for PDF */}
             {result.premiumBadge && (
               <div style={{
-                background: 'linear-gradient(135deg, rgba(184, 236, 63, 0.1) 0%, rgba(158, 225, 0, 0.1) 100%)',
-                border: '2px solid #B8EC3F',
+                background: 'rgb(248, 249, 250)',
+                border: '2px solid rgb(16, 185, 129)',
                 borderRadius: '12px',
                 padding: '20px',
                 marginBottom: '30px',
