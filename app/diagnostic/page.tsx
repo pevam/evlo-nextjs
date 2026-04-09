@@ -74,6 +74,8 @@ export default function DiagnosticPage() {
   const [avgElevation, setAvgElevation] = useState('100');
   const [hasHeatPump, setHasHeatPump] = useState(true);
   const [hasV2L, setHasV2L] = useState(false);
+  const [climateRegion, setClimateRegion] = useState('moderate'); // moderate | hot | cold
+  const [dcChargingPercent, setDcChargingPercent] = useState(50); // 0-100%
   const [result, setResult] = useState<DiagnosticResult | null>(null);
   const [reportId, setReportId] = useState('');
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
@@ -128,13 +130,36 @@ export default function DiagnosticPage() {
       maxSocStress = (parseFloat(maxSoC) - 1.0) * 1.5;
     }
 
+    // Phase 11: Non-linear physics with climate and chemistry factors
     let alphaFactor = (car.baseDegration + (climateStress > 0 ? climateStress : 0) + maxSocStress) * 2.8;
-    let calendarLoss = alphaFactor * Math.log(age + 1);
+    
+    // Apply temperature coefficient based on climate region
+    let temperatureCoefficient = 1.0;
+    if (climateRegion === 'hot') temperatureCoefficient = 1.2; // 20% faster degradation in hot climates
+    if (climateRegion === 'cold') temperatureCoefficient = 0.95; // 5% slower in cold climates
+    
+    // Apply LFP chemistry reduction (20% more stable)
+    let chemistryFactor = 1.0;
+    if (car.chemistry === 'LFP') chemistryFactor = 0.8;
+    
+    // Non-linear calendar loss: higher in first year (SEI layer formation)
+    let calendarLoss = 0;
+    if (age <= 1) {
+      // First year: 3-4% fixed loss
+      calendarLoss = 3.5 * chemistryFactor;
+    } else {
+      // After first year: standard log degradation
+      calendarLoss = (3.5 * chemistryFactor) + (alphaFactor * temperatureCoefficient * Math.log(age));
+    }
 
     const cycles = (km * (car.efficiency / 100)) / car.batteryCapacity;
-    let dcChargingPenalty = 0;
-    if (parseFloat(chargeType) >= 1.30) dcChargingPenalty = 0.2;
-    if (parseFloat(chargeType) >= 1.50) dcChargingPenalty = 0.4;
+    
+    // Phase 11: DC charging penalty from slider (0-100%)
+    const dcPenaltyFromSlider = (dcChargingPercent / 20) * 0.1; // +0.1% per 20% DC
+    
+    let dcChargingPenalty = dcPenaltyFromSlider;
+    if (parseFloat(chargeType) >= 1.30) dcChargingPenalty += 0.2;
+    if (parseFloat(chargeType) >= 1.50) dcChargingPenalty += 0.4;
 
     let wearPerCycle = parseFloat(driveMode) * (hasV2L ? 1.05 : 1.0);
     wearPerCycle += (parseFloat(avgElevation) / 100) * 0.05;
@@ -450,17 +475,18 @@ export default function DiagnosticPage() {
               border: '1px solid #d0e8ff'
             }}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '15px', color: '#1E1E1E' }}>
-                🔬 Metodologija izračuna
+                🔬 Metodologija izračuna (Phase 11: Scientific Optimization)
               </h4>
               <p style={{ margin: '0 0 12px 0', color: '#555', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 Naši izračuni temeljijo na industrijskih raziskavah degradacije litij-ionskih baterij, posebej na modelih <strong>NREL</strong> 
-                (National Renewable Energy Laboratory) in <strong>Geotab</strong>. Uporabljamo kombinacijo:
+                (National Renewable Energy Laboratory) in <strong>Geotab</strong>. Model upošteva <strong>temperaturni koeficient, DC polnilni stres in specifično kemijo baterije</strong>.
               </p>
               <ul style={{ margin: '12px 0', paddingLeft: '20px', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
-                <li><strong>Koledarsko staranje:</strong> Baterije se degradirajo s časom, tudi če se ne uporabljajo. Hitrost je odvisna od temperature, SoC-a in kemije celic.</li>
-                <li><strong>Ciklično staranje:</strong> Vsak polnjenje/praznjenje cikel slabi kapaciteto. Intenziteta je odvisna od globine cikla, temperature med vožnjo in vrste polnilnice.</li>
-                <li><strong>Klimatski dejavniki:</strong> Ekstremne temperature (vroče poleti, mrz pozimi) pospešijo degradacijo.</li>
-                <li><strong>Uporabniške navade:</strong> Hitro polnjenje (DC), vožnja na avtocesti in globoke cikle pospešijo slabljenje.</li>
+                <li><strong>Nelinearno staranje:</strong> Prvo leto: fiksna 3-4% degradacija (SEI sloj). Po prvem letu: logaritemski model.</li>
+                <li><strong>Temperaturni vpliv:</strong> Vroča podnebja (+20% hitrost degradacije), hladna podnebja (-5% hitrost).</li>
+                <li><strong>DC Charging Penalty:</strong> Vsakih 20% deleža DC polnjenja = +0.1% dodatne letne ciklične degradacije.</li>
+                <li><strong>LFP Kemija:</strong> Litij-železo-fosfatne baterije so 20% bolj stabilne v mirovanju.</li>
+                <li><strong>Ciklično staranje:</strong> Globina cikla, temperatura vožnje in vrste polnilnice.</li>
               </ul>
               <p style={{ margin: '12px 0 0 0', color: '#888', fontSize: '0.85rem', fontStyle: 'italic' }}>
                 ℹ️ Rezultati so matematični večvidični modeli, namenjeni informativni presoji. Za absolutno točnost svetujemo strojni pregled (OBD2 sonda).
@@ -649,6 +675,31 @@ export default function DiagnosticPage() {
             <div>
               <label className="form-label">Povprečna višinska razlika (m)</label>
               <input type="number" className="evlo-field" placeholder="npr. 100" value={avgElevation} onChange={(e) => setAvgElevation(e.target.value)} />
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center', margin: '20px 0', color: '#ccc' }}>--- Klimatski in polnilni parametri (Phase 11) ---</div>
+
+          <div className="evlo-grid-2">
+            <div>
+              <label className="form-label">Podnebje (Regija)</label>
+              <select className="evlo-field" value={climateRegion} onChange={(e) => setClimateRegion(e.target.value)}>
+                <option value="moderate">🌍 Zmerno (Slovenija)</option>
+                <option value="hot">☀️ Vroče (Sredozemlje)</option>
+                <option value="cold">❄️ Hladno (Skandinavija)</option>
+              </select>
+            </div>
+            <div>
+              <label className="form-label">Delež DC Polnjenja: {dcChargingPercent}%</label>
+              <input 
+                type="range" 
+                className="evlo-field" 
+                min="0" 
+                max="100" 
+                value={dcChargingPercent} 
+                onChange={(e) => setDcChargingPercent(parseInt(e.target.value))}
+                style={{ cursor: 'pointer' }}
+              />
             </div>
           </div>
 
