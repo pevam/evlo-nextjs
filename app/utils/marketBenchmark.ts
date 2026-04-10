@@ -56,27 +56,27 @@ export function getMarketPosition(
   let categoryLabel: string;
   let color: string;
 
-  if (percentile < 15) {
-    category = 'poor';
-    categoryLabel = '⚠️ Pod povprečjem';
-    color = '#dc2626'; // red
-  } else if (percentile < 35) {
-    category = 'below-average';
-    categoryLabel = '👎 Slabše';
-    color = '#f97316'; // orange
-  } else if (percentile < 65) {
-    category = 'average';
-    categoryLabel = '➖ Povprečno';
-    color = '#eab308'; // yellow
-  } else if (percentile < 85) {
-    category = 'above-average';
-    categoryLabel = '👍 Dobro';
-    color = '#22c55e'; // green
-  } else {
-    category = 'excellent';
-    categoryLabel = '💎 Odlično';
-    color = '#10b981'; // emerald
-  }
+   if (percentile < 15) {
+     category = 'poor';
+     categoryLabel = 'Pod povprečjem';
+     color = '#dc2626'; // red
+   } else if (percentile < 35) {
+     category = 'below-average';
+     categoryLabel = 'Slabše';
+     color = '#f97316'; // orange
+   } else if (percentile < 65) {
+     category = 'average';
+     categoryLabel = 'Povprečno';
+     color = '#eab308'; // yellow
+   } else if (percentile < 85) {
+     category = 'above-average';
+     categoryLabel = 'Dobro';
+     color = '#22c55e'; // green
+   } else {
+     category = 'excellent';
+     categoryLabel = 'Odlično';
+     color = '#10b981'; // emerald
+   }
 
   // Build percentage description
   let percentageDescription = `Bolje kot ${Math.round(percentile)}% vozil`;
@@ -98,7 +98,7 @@ export function getMarketPosition(
  */
 export function getPremiumBadgeText(marketPos: MarketPosition): string | null {
   if (marketPos.percentile >= 80) {
-    return `💎 PREMIUM CONDITION: Ta baterija kaže boljšo ohranjenost od ${marketPos.percentile}% primerljivih vozil v EVLO bazi.`;
+    return `PREMIUM CONDITION: Ta baterija kaže boljšo ohranjenost od ${marketPos.percentile}% primerljivih vozil v EVLO bazi.`;
   }
   return null;
 }
