@@ -7,7 +7,7 @@ interface MarketPositionGaugeProps {
   title?: string;
 }
 
-export default function MarketPositionGauge({ marketPosition, title = "Tržni položaj" }: MarketPositionGaugeProps) {
+export default function MarketPositionGauge({ marketPosition, title = "Market Comparison" }: MarketPositionGaugeProps) {
   const percentile = Math.min(100, Math.max(0, marketPosition.percentile));
   const gaugeWidth = percentile;
 

@@ -280,15 +280,15 @@ export default function DiagnosticPage() {
             <div className="score-hero">
               <div className="big-score-box">
                 <div className="big-num">{result.score}%</div>
-                <div className="big-unit">SoH (Zdravje Baterije)</div>
+                <div className="big-unit">Battery Health (EVLO Score)</div>
               </div>
               <div className="score-details">
-              <div className="score-details-title">Diagnostični status: 
+              <div className="score-details-title">Status: 
                   <span style={{ color: '#00E58E' }}>
-                    {parseFloat(result.score) >= 94 ? ' Optimalno' : parseFloat(result.score) >= 85 ? ' Skladno' : ' Degradacija'}
+                    {parseFloat(result.score) >= 94 ? ' EVLO Verified' : parseFloat(result.score) >= 85 ? ' EVLO Verified' : ' Check Required'}
                   </span>
                 </div>
-                <p>Izračun temelji na Geotab/NREL modelu degradacije.</p>
+                <p>Advanced battery analysis powered by NREL & Geotab technology.</p>
               </div>
             </div>
 
@@ -480,21 +480,19 @@ export default function DiagnosticPage() {
               border: '1px solid #d0e8ff'
             }}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '15px', color: '#1E1E1E' }}>
-                Metodologija izračuna (Phase 11: Scientific Optimization)
+                How Does EVLO Calculate Battery Health?
               </h4>
               <p style={{ margin: '0 0 12px 0', color: '#555', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Naši izračuni temeljijo na industrijskih raziskavah degradacije litij-ionskih baterij, posebej na modelih <strong>NREL</strong> 
-                (National Renewable Energy Laboratory) in <strong>Geotab</strong>. Model upošteva <strong>temperaturni koeficient, DC polnilni stres in specifično kemijo baterije</strong>.
+                Our system uses advanced data models (NREL & Geotab) and evaluates the specific history of your vehicle, including:
               </p>
               <ul style={{ margin: '12px 0', paddingLeft: '20px', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
-                <li><strong>Nelinearno staranje:</strong> Prvo leto: fiksna 3-4% degradacija (SEI sloj). Po prvem letu: logaritemski model.</li>
-                <li><strong>Temperaturni vpliv:</strong> Vroča podnebja (+20% hitrost degradacije), hladna podnebja (-5% hitrost).</li>
-                <li><strong>DC Charging Penalty:</strong> Vsakih 20% deleža DC polnjenja = +0.1% dodatne letne ciklične degradacije.</li>
-                <li><strong>LFP Kemija:</strong> Litij-železo-fosfatne baterije so 20% bolj stabilne v mirovanju.</li>
-                <li><strong>Ciklično staranje:</strong> Globina cikla, temperatura vožnje in vrste polnilnice.</li>
+                <li><strong>Temperature Impact:</strong> Climate conditions where the vehicle was primarily driven.</li>
+                <li><strong>Charging Habits:</strong> The ratio of fast DC charging versus standard AC home charging.</li>
+                <li><strong>Battery Chemistry:</strong> Age and specific chemical properties of your vehicle's battery module.</li>
+                <li><strong>Usage Patterns:</strong> Depth of discharge and state-of-charge holding patterns.</li>
               </ul>
               <p style={{ margin: '12px 0 0 0', color: '#888', fontSize: '0.85rem', fontStyle: 'italic' }}>
-                Rezultati so matematični večvidični modeli, namenjeni informativni presoji. Za absolutno točnost svetujemo strojni pregled (OBD2 sonda).
+                These results are designed for informational purposes to help you make informed decisions about your vehicle purchase or sale. For absolute accuracy, a professional technical inspection is recommended.
               </p>
             </div>
 

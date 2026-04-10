@@ -58,30 +58,30 @@ export function getMarketPosition(
 
    if (percentile < 15) {
      category = 'poor';
-     categoryLabel = 'Pod povprečjem';
+     categoryLabel = 'Needs Inspection';
      color = '#dc2626'; // red
    } else if (percentile < 35) {
      category = 'below-average';
-     categoryLabel = 'Slabše';
+     categoryLabel = 'Below Average';
      color = '#f97316'; // orange
    } else if (percentile < 65) {
      category = 'average';
-     categoryLabel = 'Povprečno';
+     categoryLabel = 'Average Condition';
      color = '#eab308'; // yellow
    } else if (percentile < 85) {
      category = 'above-average';
-     categoryLabel = 'Dobro';
+     categoryLabel = 'Good Condition';
      color = '#22c55e'; // green
    } else {
      category = 'excellent';
-     categoryLabel = 'Odlično';
+     categoryLabel = 'Excellent Condition';
      color = '#10b981'; // emerald
    }
 
   // Build percentage description
-  let percentageDescription = `Bolje kot ${Math.round(percentile)}% vozil`;
+  let percentageDescription = `Better condition than ${Math.round(percentile)}% of similar vehicles on the market`;
   if (category === 'poor') {
-    percentageDescription = `Slabše kot 85% vozil`;
+    percentageDescription = `Condition below 15% of similar vehicles`;
   }
 
   return {
