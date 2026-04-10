@@ -280,15 +280,19 @@ export default function DiagnosticPage() {
             <div className="score-hero">
               <div className="big-score-box">
                 <div className="big-num">{result.score}%</div>
-                <div className="big-unit">Battery Health (EVLO Score)</div>
+                <div className="big-unit">EVLO Indeks zdravja (Certificiran SoH)</div>
               </div>
               <div className="score-details">
-              <div className="score-details-title">Status: 
-                  <span style={{ color: '#00E58E' }}>
-                    {parseFloat(result.score) >= 94 ? ' EVLO Verified' : parseFloat(result.score) >= 85 ? ' EVLO Verified' : ' Check Required'}
-                  </span>
-                </div>
-                <p>Advanced battery analysis powered by NREL & Geotab technology.</p>
+              <div className="score-details-title">Status</div>
+                {parseFloat(result.score) >= 85 && (
+                  <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '10px' }}>Premium Ohranjenost. Baterija ne kaže znakov pretirane degradacije. Vozilo je pripravljeno na dolgoročno uporabo brez skritih stroškov.</p>
+                )}
+                {parseFloat(result.score) >= 70 && parseFloat(result.score) < 85 && (
+                  <p style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '10px' }}>Standardna Ohranjenost. Normalna obraba, primerna starosti in prevoženim kilometrom. Še vedno v varnem območju proizvajalca.</p>
+                )}
+                {parseFloat(result.score) < 70 && (
+                  <p style={{ color: '#ef4444', fontWeight: '600', marginBottom: '10px' }}>Opozorilo: Baterija se približuje garancijski meji. Svetujemo tehnični pregled celic.</p>
+                )}
               </div>
             </div>
 
