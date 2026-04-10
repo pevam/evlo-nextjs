@@ -352,7 +352,7 @@ export default function DiagnosticPage() {
             )}
 
             <div style={{ marginTop: '40px', marginBottom: '40px' }}>
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '20px', color: '#1E1E1E' }}>📊 Interaktivne analize</h4>
+              <h4 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '20px', color: '#1E1E1E' }}>Interaktivne analize</h4>
               
               {/* Chart 1: SoH Degradation */}
               <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '12px', marginBottom: '30px' }}>
@@ -391,7 +391,7 @@ export default function DiagnosticPage() {
 
               {/* Chart 2: Battery Value Depreciation */}
               <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '12px', marginBottom: '30px' }}>
-                <h5 style={{ marginBottom: '15px', color: '#1E1E1E', fontWeight: '600' }}>💶 Finančni padec vrednosti (Amortizacija)</h5>
+                <h5 style={{ marginBottom: '15px', color: '#1E1E1E', fontWeight: '600' }}>Finančni padec vrednosti (Amortizacija)</h5>
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={(() => {
                     const car = EV_DATABASE.find(c => `${c.make} ${c.model}` === result.car);
@@ -426,7 +426,7 @@ export default function DiagnosticPage() {
 
               {/* Chart 3: Range Comparison */}
               <div style={{ background: '#f8f9fa', padding: '20px', borderRadius: '12px', marginBottom: '30px' }}>
-                <h5 style={{ marginBottom: '15px', color: '#1E1E1E', fontWeight: '600' }}>🗺️ Primerjava dosega: Idealno vs. Poletje vs. Zima</h5>
+                <h5 style={{ marginBottom: '15px', color: '#1E1E1E', fontWeight: '600' }}>Primerjava dosega: Idealno vs. Poletje vs. Zima</h5>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={[
                     {
@@ -471,7 +471,7 @@ export default function DiagnosticPage() {
               border: '1px solid #d0e8ff'
             }}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '15px', color: '#1E1E1E' }}>
-                🔬 Metodologija izračuna (Phase 11: Scientific Optimization)
+                Metodologija izračuna (Phase 11: Scientific Optimization)
               </h4>
               <p style={{ margin: '0 0 12px 0', color: '#555', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 Naši izračuni temeljijo na industrijskih raziskavah degradacije litij-ionskih baterij, posebej na modelih <strong>NREL</strong> 
@@ -485,7 +485,7 @@ export default function DiagnosticPage() {
                 <li><strong>Ciklično staranje:</strong> Globina cikla, temperatura vožnje in vrste polnilnice.</li>
               </ul>
               <p style={{ margin: '12px 0 0 0', color: '#888', fontSize: '0.85rem', fontStyle: 'italic' }}>
-                ℹ️ Rezultati so matematični večvidični modeli, namenjeni informativni presoji. Za absolutno točnost svetujemo strojni pregled (OBD2 sonda).
+                Rezultati so matematični večvidični modeli, namenjeni informativni presoji. Za absolutno točnost svetujemo strojni pregled (OBD2 sonda).
               </p>
             </div>
 
@@ -514,9 +514,9 @@ export default function DiagnosticPage() {
             <button 
               className="evlo-btn-pill"
               onClick={handlePrintClick}
-              style={{ marginTop: '20px', background: '#005258', color: '#FFFFFF', fontWeight: 'bold' }}
+              style={{ marginTop: '20px', background: '#005258', color: '#FFFFFF', fontWeight: 'bold', fontFamily: "'Gabarito'" }}
             >
-              📄 Prenesi EVLO Certifikat (PDF)
+              Prenesi EVLO Certifikat (PDF)
             </button>
 
             <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #ddd', fontSize: '0.75rem', color: '#888', lineHeight: '1.6' }}>
