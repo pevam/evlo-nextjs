@@ -78,7 +78,7 @@ h2 svg {
 }
 
 h2 span {
-    color: var(--evlo-volt);
+    color: #10b981;
 }
 
 .form-group {
@@ -148,11 +148,9 @@ input[type="range"].evlo-field::-moz-range-thumb {
 
 /* React Select Control Border */
 .css-18633xh-control {
-    background-color: #ffffff !important;
-    border-color: 2px solid #10b981 !important;
+    background-color: #fff !important;
     border-radius: 12px !important;
-    border-style: solid !important;
-    border-width: 2px !important;
+    border: 2px solid #10b981 !important;
     box-shadow: none !important;
     box-sizing: border-box !important;
     padding: 4px 8px !important;
@@ -167,6 +165,10 @@ input[type="range"].evlo-field::-moz-range-thumb {
 .css-18633xh-control--is-focused {
     border-color: #10b981 !important;
     box-shadow: 0 0 0 1px #10b981 !important;
+}
+
+.css-1u9des2-indicatorSeparator {
+    background-color: #10b981 !important;
 }
 
 .file-upload-wrapper {

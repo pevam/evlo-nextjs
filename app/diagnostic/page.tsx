@@ -498,28 +498,6 @@ export default function DiagnosticPage() {
               </p>
             </div>
 
-            <div className="audit-log-wrapper">
-              <div className="audit-log-header">Tehnični podatki</div>
-              <div className="audit-log">
-                <div className="audit-item">
-                  <span className="key">Starost / Km:</span>
-                  <span className="val">{result.age} let / {result.km} km</span>
-                </div>
-                <div className="audit-item">
-                  <span className="key">Polni cikli:</span>
-                  <span className="val">{result.cycles} ciklov</span>
-                </div>
-                <div className="audit-item">
-                  <span className="key">Letni padec:</span>
-                  <span className="val">{result.annLoss}%</span>
-                </div>
-                <div className="audit-item">
-                  <span className="key">Model:</span>
-                  <span className="val">EVLO Geotab V1</span>
-                </div>
-              </div>
-            </div>
-
             <button 
               className="evlo-btn-pill"
               onClick={handlePrintClick}
