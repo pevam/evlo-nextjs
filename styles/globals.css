@@ -29,7 +29,7 @@ html {
 
 body {
     background-color: var(--evlo-bg);
-    font-family: 'Gabarito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: __Gabarito_2d3e63, __Gabarito_Fallback_2d3e63, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--evlo-text-main);
     line-height: 1.6;
 }
@@ -103,7 +103,7 @@ select.evlo-field {
     border-radius: 200px !important;
     padding: 12px 16px !important;
     color: var(--evlo-dark) !important;
-    font-family: 'Gabarito', sans-serif !important;
+    font-family: __Gabarito_2d3e63, __Gabarito_Fallback_2d3e63, sans-serif !important;
     font-size: 1rem !important;
     appearance: none !important;
     box-sizing: border-box !important;
@@ -157,7 +157,7 @@ input[type="range"].evlo-field::-moz-range-thumb {
     box-sizing: border-box !important;
     padding: 4px 8px !important;
     font-size: 14px !important;
-    font-family: 'Gabarito', sans-serif !important;
+    font-family: __Gabarito_2d3e63, __Gabarito_Fallback_2d3e63, sans-serif !important;
 }
 
 .css-18633xh-control:hover {
@@ -281,7 +281,7 @@ input[type="range"].evlo-field::-moz-range-thumb {
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
-    font-family: 'Gabarito';
+    font-family: __Gabarito_2d3e63, __Gabarito_Fallback_2d3e63;
     font-size: 1rem;
 }
 
@@ -331,7 +331,7 @@ input[type="range"].evlo-field::-moz-range-thumb {
     text-align: center;
     margin-top: 20px;
     text-transform: uppercase;
-    font-family: 'Gabarito';
+    font-family: __Gabarito_2d3e63, __Gabarito_Fallback_2d3e63;
 }
 
 .evlo-btn-pill:hover {

@@ -247,6 +247,12 @@ export default function DiagnosticPage() {
               )}
               <div className="diag-header-text">
                 <h3>{result.car}</h3>
+                <div className="badge-container" style={{ marginBottom: '20px' }}>
+                  <div className="param-pill">Starost: {result.age} let</div>
+                  <div className="param-pill">Km: {result.km}</div>
+                  <div className="param-pill">Cikli: {result.cycles}</div>
+                  <div className="param-pill">Padec: {result.annLoss}%/leto</div>
+                </div>
                 <div className="badge-container">
                   <div className="tech-badge">
                     <span className="dot" style={{ background: '#3182CE' }}></span> Kemija: <span>{result.chemistry}</span>
@@ -507,7 +513,7 @@ export default function DiagnosticPage() {
             <button 
               className="evlo-btn-pill"
               onClick={handlePrintClick}
-              style={{ marginTop: '20px', background: '#005258', color: '#FFFFFF', fontWeight: 'bold', fontFamily: "'Gabarito'" }}
+              style={{ marginTop: '20px', background: '#005258', color: '#FFFFFF', fontWeight: 'bold', fontFamily: "__Gabarito_2d3e63, __Gabarito_Fallback_2d3e63" }}
             >
               Prenesi EVLO Certifikat (PDF)
             </button>
