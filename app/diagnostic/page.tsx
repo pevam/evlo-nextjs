@@ -252,6 +252,16 @@ export default function DiagnosticPage() {
                   <div className="param-pill">Km: {result.km}</div>
                   <div className="param-pill">Cikli: {result.cycles}</div>
                   <div className="param-pill">Padec: {result.annLoss}%/leto</div>
+                  <div className="param-pill">Max SoC: {maxSoC === '0.95' ? '70-80%' : maxSoC === '1.10' ? '90%' : maxSoC === '1.25' ? '100%' : 'Vedno 100%'}</div>
+                  <div className="param-pill">Min SoC: {minSoC === '0.95' ? 'Redko pod 20%' : minSoC === '1.10' ? 'Do 10%' : 'Do 0%'}</div>
+                  <div className="param-pill">Polnjenje: {chargeType === '0.95' ? 'AC 11kW' : chargeType === '1.15' ? 'AC/DC' : chargeType === '1.30' ? 'DC 100kW' : 'DC 150kW+'}</div>
+                  <div className="param-pill">Vožnja: {driveMode === '0.95' ? 'Eco' : driveMode === '1.05' ? 'Mešano' : driveMode === '1.25' ? 'Avtocesta' : 'Sportna'}</div>
+                  <div className="param-pill">Poletje: {summerParking === '0.95' ? 'Garaža' : summerParking === '1.10' ? 'Nadstrešek' : 'Prostem'}</div>
+                  <div className="param-pill">Zima: {winterParking === '0.95' ? 'Ogrevana' : winterParking === '1.10' ? 'Hladna' : winterParking === '1.25' ? 'Pod nadstreškom' : 'Na mrazu'}</div>
+                  <div className="param-pill">Temp: {avgTemp}°C</div>
+                  <div className="param-pill">Elevacija: {avgElevation}m</div>
+                  <div className="param-pill">Podnebje: {climateRegion === 'moderate' ? 'Zmerno' : climateRegion === 'hot' ? 'Vroče' : 'Hladno'}</div>
+                  <div className="param-pill">DC: {dcChargingPercent}%</div>
                 </div>
                 <div className="badge-container">
                   <div className="tech-badge">

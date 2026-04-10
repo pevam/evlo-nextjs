@@ -149,7 +149,7 @@ input[type="range"].evlo-field::-moz-range-thumb {
 /* React Select Control Border */
 .css-18633xh-control {
     background-color: #ffffff !important;
-    border-color: 2px solid rgb(16, 185, 129) !important;
+    border-color: 2px solid #10b981 !important;
     border-radius: 12px !important;
     border-style: solid !important;
     border-width: 2px !important;
@@ -161,12 +161,12 @@ input[type="range"].evlo-field::-moz-range-thumb {
 }
 
 .css-18633xh-control:hover {
-    border-color: rgb(0, 82, 88) !important;
+    border-color: #10b981 !important;
 }
 
 .css-18633xh-control--is-focused {
-    border-color: rgb(16, 185, 129) !important;
-    box-shadow: 0 0 0 1px rgb(16, 185, 129) !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 1px #10b981 !important;
 }
 
 .file-upload-wrapper {
