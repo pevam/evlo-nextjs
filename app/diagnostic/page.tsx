@@ -261,13 +261,6 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div className="ai-insight-box">
-              <div className="ai-insight-title">SISTEMSKO OBVESTILO</div>
-              <p className="ai-insight-text">
-                Priporočamo optimalnega varovanja baterije za maksimalno dolžino življenja.
-              </p>
-            </div>
-
             <div className="score-hero">
               <div className="big-score-box">
                 <div className="big-num">{result.score}%</div>
@@ -330,7 +323,7 @@ export default function DiagnosticPage() {
               title="Tržni položaj vozila"
             />
 
-            {/* Premium Badge for PDF */}
+            {/* Premium Badge for PDF - Remove emojis from premiumBadge text */}
             {result.premiumBadge && (
               <div style={{
                 background: 'rgb(248, 249, 250)',
@@ -346,7 +339,7 @@ export default function DiagnosticPage() {
                   color: '#1E1E1E',
                   lineHeight: '1.6'
                 }}>
-                  {result.premiumBadge}
+                  {result.premiumBadge.replace(/💎/g, '')}
                 </div>
               </div>
             )}
