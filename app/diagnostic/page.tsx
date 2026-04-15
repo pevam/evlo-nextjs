@@ -101,12 +101,13 @@ export default function DiagnosticPage() {
   };
 
   const EVLO_LOGO = (
-    <svg width="78" height="44" viewBox="0 0 78 44" fill="none">
+    <svg width="101.4" height="57.2" viewBox="0 0 78 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_1_378)">
         <path d="M10.7991 36.9239C8.77177 36.9239 6.98711 36.4813 5.44516 35.5961C3.90321 34.6823 2.70392 33.4117 1.84728 31.784C0.990647 30.1564 0.562328 28.2575 0.562328 26.0874C0.562328 23.8887 0.990647 21.9755 1.84728 20.3479C2.70392 18.7203 3.90321 17.4496 5.44516 16.5359C6.98711 15.6222 8.77177 15.1653 10.7991 15.1653C12.8551 15.1653 14.654 15.6222 16.196 16.5359C17.7379 17.4496 18.9372 18.7203 19.7938 20.3479C20.6505 21.9755 21.0788 23.8887 21.0788 26.0874C21.0788 26.2873 21.0645 26.5014 21.036 26.7299C21.036 26.9298 21.0217 27.1154 20.9931 27.2867H4.63136V23.6032H17.9092L16.7099 26.0874C16.7099 23.9173 16.2245 22.1326 15.2537 20.7334C14.2828 19.3342 12.798 18.6347 10.7991 18.6347C9.02876 18.6347 7.61531 19.2057 6.55879 20.3479C5.50227 21.4616 4.97401 22.9321 4.97401 24.7596V26.9869C4.97401 28.9 5.48799 30.4277 6.51596 31.5699C7.54392 32.6835 8.97165 33.2403 10.7991 33.2403C12.4839 33.2403 13.7831 32.8834 14.6968 32.1695C15.6106 31.4557 16.4101 30.5705 17.0954 29.514L20.3078 31.527C19.337 33.326 18.0806 34.6823 16.5386 35.5961C15.0252 36.4813 13.1121 36.9239 10.7991 36.9239ZM41.4376 15.5936L33.5566 36.4955H29.4876L21.1782 15.5936H25.9325L31.7576 31.8269H31.2008L36.769 15.5936H41.4376ZM47.4271 36.7097C46.6847 36.7097 46.0279 36.5384 45.4568 36.1957C44.8857 35.8245 44.4288 35.2963 44.0862 34.6109C43.7721 33.9256 43.615 33.0833 43.615 32.0839V7.32705H47.8126V30.5847C47.8126 31.4699 48.0267 32.0696 48.455 32.3837C48.9119 32.6978 49.4259 32.8548 49.997 32.8548V36.2814C49.6258 36.4242 49.226 36.5241 48.7977 36.5812C48.3694 36.6669 47.9125 36.7097 47.4271 36.7097ZM62.3356 36.9239C60.2225 36.9239 58.3522 36.4813 56.7246 35.5961C55.1255 34.6823 53.8834 33.4117 52.9982 31.784C52.113 30.1564 51.6704 28.2575 51.6704 26.0874C51.6704 23.8887 52.113 21.9755 52.9982 20.3479C53.8834 18.7203 55.1255 17.4496 56.7246 16.5359C58.3522 15.6222 60.2225 15.1653 62.3356 15.1653C64.4772 15.1653 66.3475 15.6222 67.9465 16.5359C69.5456 17.4496 70.7877 18.7203 71.6729 20.3479C72.5867 21.9755 73.0435 23.8887 73.0435 26.0874C73.0435 28.2575 72.5867 30.1564 71.6729 31.784C70.7877 33.4117 69.5456 34.6823 67.9465 35.5961C66.3475 36.4813 64.4772 36.9239 62.3356 36.9239ZM62.3356 32.812C64.2487 32.812 65.7764 32.1981 66.9186 30.9702C68.0893 29.7138 68.6747 28.0862 68.6747 26.0874C68.6747 24.06 68.0893 22.4181 66.9186 21.1617C65.7764 19.9053 64.2487 19.2771 62.3356 19.2771C60.451 19.2771 58.9233 19.9053 57.7526 21.1617C56.6104 22.3896 56.0393 24.0172 56.0393 26.0446C56.0393 28.0719 56.6104 29.7138 57.7526 30.9702C58.9233 32.1981 60.451 32.812 62.3356 32.812Z" fill="#1E1E1E"></path>
         <circle cx="73.9824" cy="12.4602" r="3.11504" fill="#B8EC3F"></circle>
       </g>
     </svg>
+
   );
 
   const calculateDiagnostic = () => {
@@ -277,63 +278,84 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div className="score-hero">
-              <div className="big-score-box">
-                <div className="big-num">{result.score}%</div>
-                <div className="big-unit">EVLO Indeks zdravja (Certificiran SoH)</div>
-              </div>
-              <div className="score-details">
-              <div className="score-details-title">Status</div>
+            <div className="score-hero" style={{ display: 'flex', gap: '40px', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid rgb(0, 229, 142)' }}>
+              <svg width="200" height="120" viewBox="0 0 200 120" style={{ flexShrink: 0 }}>
+                <defs>
+                  <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgb(0, 229, 142)" />
+                    <stop offset="100%" stopColor="rgb(184, 236, 63)" />
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="110" r="90" fill="none" stroke="#e8f5e9" strokeWidth="8"/>
+                <path d="M 20 110 A 90 90 0 0 1 180 110" fill="none" stroke="url(#gaugeGradient)" strokeWidth="8" strokeLinecap="round"/>
+                <text x="100" y="70" fontSize="48" fontWeight="bold" textAnchor="middle" fill="#1a6b2a">{result.score}%</text>
+              </svg>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
+                  <div style={{ background: '#eafbea', padding: '12px 16px', borderRadius: '20px', border: '1.5px solid rgb(0, 229, 142)', fontWeight: '600', color: '#1a6b2a', fontSize: '0.9rem' }}>Originalno {result.wltp} km</div>
+                  <div style={{ background: '#fdecea', padding: '12px 16px', borderRadius: '20px', border: '1.5px solid #e74c3c', fontWeight: '600', color: '#c0392b', fontSize: '0.9rem' }}>Izguba -{result.lostRange} km</div>
+                </div>
+                <div style={{ fontWeight: '600', marginBottom: '12px', color: '#1E1E1E', fontSize: '0.95rem' }}>EVLO Indeks zdravja (Certificiran SoH)</div>
                 {parseFloat(result.score) >= 85 && (
-                  <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '10px' }}>Premium Ohranjenost. Baterija ne kaže znakov pretirane degradacije. Vozilo je pripravljeno na dolgoročno uporabo brez skritih stroškov.</p>
+                  <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Premium Ohranjenost. Baterija ne kaže znakov pretirane degradacije. Vozilo je pripravljeno na dolgoročno uporabo brez skritih stroškov.</p>
                 )}
                 {parseFloat(result.score) >= 70 && parseFloat(result.score) < 85 && (
-                  <p style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '10px' }}>Standardna Ohranjenost. Normalna obraba, primerna starosti in prevoženim kilometrom. Še vedno v varnem območju proizvajalca.</p>
+                  <p style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Standardna Ohranjenost. Normalna obraba, primerna starosti in prevoženim kilometrom. Še vedno v varnem območju proizvajalca.</p>
                 )}
                 {parseFloat(result.score) < 70 && (
-                  <p style={{ color: '#ef4444', fontWeight: '600', marginBottom: '10px' }}>Opozorilo: Baterija se približuje garancijski meji. Svetujemo tehnični pregled celic.</p>
+                  <p style={{ color: '#ef4444', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Opozorilo: Baterija se približuje garancijski meji. Svetujemo tehnični pregled celic.</p>
                 )}
               </div>
             </div>
 
-            <div className="highlights-grid">
-              <div className="highlight-card" style={{ gridColumn: 'span 3', background: 'rgb(248, 249, 250)', padding: '25px', borderRadius: '12px', marginBottom: '30px', border: '2px solid rgb(16, 185, 129)' }}>
-                <div className="highlight-icon"></div>
-                <div className="highlight-value">{result.batteryValue} €</div>
-                <div className="highlight-label">Vrednost baterije</div>
+            <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid rgb(0, 229, 142)', marginBottom: '40px' }}>
+              <div style={{ marginBottom: '25px' }}>
+                <div style={{ fontSize: '2rem', fontWeight: '700', color: '#1a6b2a', marginBottom: '10px' }}>Doseg {result.realRange} km</div>
+                <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '15px', fontWeight: '500' }}>Trenutna sposobnost glede na stanje baterije</div>
+                <div style={{ background: '#e8f5e9', height: '24px', borderRadius: '12px', overflow: 'hidden', marginBottom: '10px', position: 'relative' }}>
+                  <div style={{ background: 'linear-gradient(90deg, rgb(0, 229, 142) 0%, rgb(184, 236, 63) 100%)', height: '100%', width: `${(result.realRange / result.wltp) * 100}%`, transition: 'width 0.3s' }}></div>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#888', fontWeight: '500' }}>
+                  <span>0 km</span>
+                  <span>{result.realRange} km trenutno</span>
+                  <span>{result.wltp} km original</span>
+                </div>
               </div>
-              <div className="highlight-card">
-                <div className="highlight-icon"></div>
-                <div className="highlight-value">{result.realRange} km</div>
-                <div className="highlight-label">Doseg</div>
-              </div>
-              <div className="highlight-card">
-                <div className="highlight-icon"></div>
-                <div className="highlight-value">{result.winterRange} km</div>
-                <div className="highlight-label">Zimski doseg</div>
-              </div>
-              <div className="highlight-card">
-                <div className="highlight-icon"></div>
-                <div className="highlight-value">{result.summerRange} km</div>
-                <div className="highlight-label">Poletni doseg</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr', gap: '20px', paddingTop: '20px', borderTop: '1px solid #e0e0e0' }}>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: '#888', textTransform: 'uppercase', fontWeight: '600', marginBottom: '8px' }}>Zimski doseg</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: '700', color: '#1a6b2a' }}>{result.winterRange} km</div>
+                </div>
+                <div style={{ background: '#d0d0d0' }}></div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: '#888', textTransform: 'uppercase', fontWeight: '600', marginBottom: '8px' }}>Poletni doseg</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: '700', color: '#1a6b2a' }}>{result.summerRange} km</div>
+                </div>
               </div>
             </div>
 
-            <div className="data-grid">
+            <div className="data-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
               <div className="data-card">
-                <span className="label">Originalni doseg</span>
-                <div className="value">{result.wltp} km</div>
-                <span className="sub" style={{ color: '#ff4d4d' }}>Izguba: -{result.lostRange} km</span>
-              </div>
-              <div className="data-card">
-                <span className="label">Tehnična vrednost</span>
-                <div className="value">{result.batteryValue} €</div>
-                <span className="sub">Amortizacija: -{result.lostValue} €</span>
+                <span className="label">Izguba dosega</span>
+                <div>
+                  <div style={{ fontSize: '0.85rem', color: '#555', marginBottom: '8px' }}>Originalni doseg → <strong>{result.wltp} km</strong></div>
+                  <div style={{ fontSize: '0.85rem', color: '#555', marginBottom: '12px' }}>Trenutni doseg → <strong>{result.realRange} km</strong></div>
+                  <div style={{ borderTop: '1px solid #ddd', paddingTop: '8px', color: '#c0392b', fontWeight: '600' }}>Izguba → −{((result.lostRange / result.wltp) * 100).toFixed(1)}%</div>
+                </div>
               </div>
               <div className="data-card">
                 <span className="label">Predviden EOL</span>
                 <div className="value">Leto {result.eol}</div>
-                <span className="sub" style={{ color: '#3182CE' }}>Letni padec: {result.annLoss}%</span>
+                <span className="sub" style={{ color: '#888', fontSize: '0.8rem' }}>Še ~{Math.max(1, result.eol - 2026)} let</span>
+                <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid #ddd' }}>
+                  <div style={{ fontSize: '0.8rem', color: '#555', marginBottom: '4px' }}>Letni padec</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontWeight: '600', fontSize: '0.85rem' }}>{result.annLoss}%</span>
+                    <div style={{ flex: 1, height: '4px', background: '#e8f5e9', borderRadius: '2px', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', background: '#e74c3c', width: `${Math.min(100, parseFloat(result.annLoss) * 10)}%` }}></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
