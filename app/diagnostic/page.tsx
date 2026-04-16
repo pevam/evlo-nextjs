@@ -561,10 +561,14 @@ export default function DiagnosticPage() {
     setAvgTemp(wizardData.avgTemp);
     setHasHeatPump(wizardData.hasHeatPump);
     
-    // Trigger calculation after state is updated
+    // Trigger calculation after state is updated with longer delay
     setTimeout(() => {
+      if (!wizardData.selectedCar) {
+        alert("Prosimo, izberi model vozila");
+        return;
+      }
       calculateDiagnostic();
-    }, 100);
+    }, 200);
   };
 
   return (
