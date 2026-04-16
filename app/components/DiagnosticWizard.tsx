@@ -59,7 +59,13 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
   });
 
   const handleNext = () => {
-    if (step === 3) {
+    if (step === 1) {
+      if (!data.selectedCar) {
+        alert('Prosimo, izberi model vozila');
+        return;
+      }
+      setStep(step + 1);
+    } else if (step === 3) {
       startLoading();
     } else {
       setStep(step + 1);
