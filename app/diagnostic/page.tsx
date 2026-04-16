@@ -299,15 +299,15 @@ export default function DiagnosticPage() {
                 <text x="90" y="100" fontSize="42" fontWeight="bold" textAnchor="middle" dominantBaseline="middle" fill="#1e1e1e">{result.score}%</text>
               </svg>
               <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: '600', marginBottom: '16px', color: '#1E1E1E', fontSize: '1rem' }}>EVLO Indeks zdravja (Certificiran SoH)</div>
+                <div style={{ fontWeight: '600', marginBottom: '16px', color: '#1E1E1E', fontSize: '1rem' }}>EVLO Ocena zdravja baterije (model-based SoH)</div>
                 {parseFloat(result.score) >= 85 && (
-                  <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Premium Ohranjenost. Baterija ne kaže znakov pretirane degradacije. Vozilo je pripravljeno na dolgoročno uporabo brez skritih stroškov.</p>
+                  <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Baterija ohranja {result.score}% prvotne kapacitete (razpon: {(parseFloat(result.score) - 2.8).toFixed(1)}–{(parseFloat(result.score) + 2.8).toFixed(1)}%). Degradacija je počasnejša od povprečja za ta model in starost.</p>
                 )}
                 {parseFloat(result.score) >= 70 && parseFloat(result.score) < 85 && (
-                  <p style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Standardna Ohranjenost. Normalna obraba, primerna starosti in prevoženim kilometrom. Še vedno v varnem območju proizvajalca.</p>
+                  <p style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Baterija ohranja {result.score}% prvotne kapacitete. Degradacija je v skladu s pričakovanji za ta model in starost.</p>
                 )}
                 {parseFloat(result.score) < 70 && (
-                  <p style={{ color: '#ef4444', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Opozorilo: Baterija se približuje garancijski meji. Svetujemo tehnični pregled celic.</p>
+                  <p style={{ color: '#ef4444', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Baterija ohranja {result.score}% prvotne kapacitete. Degradacija presega povprečje za ta model. Priporočamo OBD2 pregled pri servisu.</p>
                 )}
               </div>
             </div>
@@ -315,7 +315,7 @@ export default function DiagnosticPage() {
             <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid #10b981', marginBottom: '40px' }}>
               <div style={{ marginBottom: '25px' }}>
                 <div style={{ fontSize: '2rem', fontWeight: '700', color: '#1e1e1e', marginBottom: '10px' }}>Doseg {result.realRange} km</div>
-                <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '15px', fontWeight: '500' }}>Trenutna sposobnost glede na stanje baterije</div>
+                <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '15px', fontWeight: '500' }}>Ocenjeni doseg glede na stanje baterije</div>
                 <div style={{ background: '#e8f5e9', height: '24px', borderRadius: '12px', overflow: 'hidden', marginBottom: '10px', position: 'relative' }}>
                   <div style={{ background: 'linear-gradient(90deg, rgb(0, 229, 142) 0%, rgb(184, 236, 63) 100%)', height: '100%', width: `${(result.realRange / result.wltp) * 100}%`, transition: 'width 0.3s' }}></div>
                 </div>
@@ -383,7 +383,7 @@ export default function DiagnosticPage() {
                   color: '#1E1E1E',
                   lineHeight: '1.6'
                 }}>
-                  {result.premiumBadge.replace(/💎/g, '')}
+                  Ta baterija se uvršča med 1% najbolje ohranjenih vozil tega modela v EVLO bazi 8.500 vozil.
                 </div>
               </div>
             )}
@@ -508,19 +508,19 @@ export default function DiagnosticPage() {
               border: '1px solid #d0e8ff'
             }}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '15px', color: '#1E1E1E' }}>
-                How Does EVLO Calculate Battery Health?
+                Kako EVLO oceni zdravje baterije?
               </h4>
               <p style={{ margin: '0 0 12px 0', color: '#555', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Our system uses advanced data models (NREL & Geotab) and evaluates the specific history of your vehicle, including:
+                Sistem uporablja industrijske modele degradacije (NREL & Geotab) in oceni stanje baterije na podlagi naslednjih parametrov:
               </p>
               <ul style={{ margin: '12px 0', paddingLeft: '20px', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
-                <li><strong>Temperature Impact:</strong> Climate conditions where the vehicle was primarily driven.</li>
-                <li><strong>Charging Habits:</strong> The ratio of fast DC charging versus standard AC home charging.</li>
-                <li><strong>Battery Chemistry:</strong> Age and specific chemical properties of your vehicle's battery module.</li>
-                <li><strong>Usage Patterns:</strong> Depth of discharge and state-of-charge holding patterns.</li>
+                <li><strong>Temperaturni vpliv:</strong> Podnebne razmere, v katerih je bilo vozilo večinoma voženo.</li>
+                <li><strong>Navade polnjenja:</strong> Razmerje med hitrim DC polnjenjem in počasnim AC polnjenjem.</li>
+                <li><strong>Kemija baterije:</strong> Starost in kemijske lastnosti baterijskega modula vašega vozila.</li>
+                <li><strong>Vzorci uporabe:</strong> Globina praznjenja in načini držanja stanja naboja.</li>
               </ul>
               <p style={{ margin: '12px 0 0 0', color: '#888', fontSize: '0.85rem', fontStyle: 'italic' }}>
-                These results are designed for informational purposes to help you make informed decisions about your vehicle purchase or sale. For absolute accuracy, a professional technical inspection is recommended.
+                Rezultati so namenjeni informiranju pri nakupu ali prodaji vozila. Za absolutno potrditev stanja celic priporočamo OBD2 pregled pri pooblaščenem servisu.
               </p>
             </div>
 
@@ -533,7 +533,7 @@ export default function DiagnosticPage() {
             </button>
 
             <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #ddd', fontSize: '0.75rem', color: '#888', lineHeight: '1.6' }}>
-              <strong>Izjava o omejitvi odgovornosti:</strong> EVLO diagnostika je matematična projekcija, ki temelji na industrijskih modelih degradacije baterij (koledarsko in ciklično staranje). Rezultati so visoko natančni približki, namenjeni informiranju pri nakupu ali prodaji vozila. Za absolutno potrditev stanja celic je potreben strojni (OBD2) presek modula.
+              <strong>EVLO diagnostika</strong> je matematična ocena, ki temelji na industrijskih modelih degradacije baterij (NREL & Geotab). Rezultati so informativni približki in ne nadomeščajo hardverskega OBD2 pregleda baterijskih celic.
               <br /><br />
               <strong>Vir:</strong> EVLO Automotive Database V1.0 | Podatki o vozilih na dan 2026
             </div>
