@@ -279,23 +279,28 @@ export default function DiagnosticPage() {
             </div>
 
             <div className="score-hero" style={{ display: 'flex', gap: '40px', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid rgb(0, 229, 142)' }}>
-              <svg width="200" height="120" viewBox="0 0 200 120" style={{ flexShrink: 0 }}>
+              <svg width="180" height="180" viewBox="0 0 180 180" style={{ flexShrink: 0 }}>
                 <defs>
-                  <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="rgb(0, 229, 142)" />
                     <stop offset="100%" stopColor="rgb(184, 236, 63)" />
                   </linearGradient>
                 </defs>
-                <circle cx="100" cy="110" r="90" fill="none" stroke="#e8f5e9" strokeWidth="8"/>
-                <path d="M 20 110 A 90 90 0 0 1 180 110" fill="none" stroke="url(#gaugeGradient)" strokeWidth="8" strokeLinecap="round"/>
-                <text x="100" y="70" fontSize="48" fontWeight="bold" textAnchor="middle" fill="#1a6b2a">{result.score}%</text>
+                <circle cx="90" cy="90" r="75" fill="none" stroke="#e8f5e9" strokeWidth="12"/>
+                <circle 
+                  cx="90" cy="90" r="75" 
+                  fill="none" 
+                  stroke="url(#gaugeGradient)" 
+                  strokeWidth="12"
+                  strokeDasharray={`${(parseFloat(result.score) / 100) * 471} 471`}
+                  strokeLinecap="round"
+                  style={{ transition: 'stroke-dasharray 0.6s ease', transform: 'rotate(-90deg)', transformOrigin: '90px 90px' }}
+                />
+                <text x="90" y="85" fontSize="56" fontWeight="bold" textAnchor="middle" fill="#1e1e1e">{result.score}%</text>
+                <text x="90" y="110" fontSize="12" fontWeight="600" textAnchor="middle" fill="#888">ZDRAVJE</text>
               </svg>
               <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
-                  <div style={{ background: '#eafbea', padding: '12px 16px', borderRadius: '20px', border: '1.5px solid rgb(0, 229, 142)', fontWeight: '600', color: '#1a6b2a', fontSize: '0.9rem' }}>Originalno {result.wltp} km</div>
-                  <div style={{ background: '#fdecea', padding: '12px 16px', borderRadius: '20px', border: '1.5px solid #e74c3c', fontWeight: '600', color: '#c0392b', fontSize: '0.9rem' }}>Izguba -{result.lostRange} km</div>
-                </div>
-                <div style={{ fontWeight: '600', marginBottom: '12px', color: '#1E1E1E', fontSize: '0.95rem' }}>EVLO Indeks zdravja (Certificiran SoH)</div>
+                <div style={{ fontWeight: '600', marginBottom: '16px', color: '#1E1E1E', fontSize: '1rem' }}>EVLO Indeks zdravja (Certificiran SoH)</div>
                 {parseFloat(result.score) >= 85 && (
                   <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Premium Ohranjenost. Baterija ne kaže znakov pretirane degradacije. Vozilo je pripravljeno na dolgoročno uporabo brez skritih stroškov.</p>
                 )}
@@ -310,7 +315,7 @@ export default function DiagnosticPage() {
 
             <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid rgb(0, 229, 142)', marginBottom: '40px' }}>
               <div style={{ marginBottom: '25px' }}>
-                <div style={{ fontSize: '2rem', fontWeight: '700', color: '#1a6b2a', marginBottom: '10px' }}>Doseg {result.realRange} km</div>
+                <div style={{ fontSize: '2rem', fontWeight: '700', color: '#1e1e1e', marginBottom: '10px' }}>Doseg {result.realRange} km</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '15px', fontWeight: '500' }}>Trenutna sposobnost glede na stanje baterije</div>
                 <div style={{ background: '#e8f5e9', height: '24px', borderRadius: '12px', overflow: 'hidden', marginBottom: '10px', position: 'relative' }}>
                   <div style={{ background: 'linear-gradient(90deg, rgb(0, 229, 142) 0%, rgb(184, 236, 63) 100%)', height: '100%', width: `${(result.realRange / result.wltp) * 100}%`, transition: 'width 0.3s' }}></div>
@@ -338,8 +343,6 @@ export default function DiagnosticPage() {
               <div className="data-card">
                 <span className="label">Izguba dosega</span>
                 <div>
-                  <div style={{ fontSize: '0.85rem', color: '#555', marginBottom: '8px' }}>Originalni doseg → <strong>{result.wltp} km</strong></div>
-                  <div style={{ fontSize: '0.85rem', color: '#555', marginBottom: '12px' }}>Trenutni doseg → <strong>{result.realRange} km</strong></div>
                   <div style={{ borderTop: '1px solid #ddd', paddingTop: '8px', color: '#c0392b', fontWeight: '600' }}>Izguba → −{((result.lostRange / result.wltp) * 100).toFixed(1)}%</div>
                 </div>
               </div>
