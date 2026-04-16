@@ -278,7 +278,7 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div className="score-hero" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid #10b981' }}>
+            <div className="score-hero" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid #10b981' }}>
               <svg width="180" height="180" viewBox="0 0 180 180" style={{ flexShrink: 0, marginBottom: '20px' }}>
                 <defs>
                   <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
