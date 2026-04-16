@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { EV_DATABASE } from '@/app/data/ev-database';
+import { EVDatabaseEntry, EV_DATABASE } from '@/app/data/ev-database';
+import CarSelector from './CarSelector';
 
 interface WizardState {
   // Step 1: Vehicle
-  carModel: string;
+  selectedCar: EVDatabaseEntry | null;
   carYear: string;
   carKm: string;
   carVin: string;
@@ -41,7 +42,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState(LOADING_MESSAGES[0]);
   const [data, setData] = useState<WizardState>({
-    carModel: '',
+    selectedCar: null,
     carYear: new Date().getFullYear().toString(),
     carKm: '50000',
     carVin: '',
@@ -165,20 +166,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
             <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500', color: '#1e1e1e' }}>
               Model vozila
             </label>
-            <input
-              type="text"
-              placeholder="Vtipkaj 'Tesla Model 3', 'VW ID.4'..."
-              value={data.carModel}
-              onChange={(e) => setData({ ...data, carModel: e.target.value })}
-              style={{
-                width: '100%',
-                padding: '12px',
-                border: '1.5px solid #e9ecef',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                boxSizing: 'border-box'
-              }}
-            />
+            <CarSelector value={data.selectedCar} onSelect={(car) => setData({ ...data, selectedCar: car })} />
             <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '6px' }}>
               Podpiramo 200+ EV modelov.
             </div>

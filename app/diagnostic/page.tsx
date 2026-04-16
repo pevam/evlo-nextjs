@@ -546,6 +546,7 @@ export default function DiagnosticPage() {
 
   const handleWizardComplete = (wizardData: any) => {
     // Map wizard data to state
+    setSelectedCar(wizardData.selectedCar);
     setCarYear(wizardData.carYear);
     setCarKm(wizardData.carKm);
     setCarVin(wizardData.carVin);
@@ -560,8 +561,10 @@ export default function DiagnosticPage() {
     setAvgTemp(wizardData.avgTemp);
     setHasHeatPump(wizardData.hasHeatPump);
     
-    // Trigger calculation
-    calculateDiagnostic();
+    // Trigger calculation after state is updated
+    setTimeout(() => {
+      calculateDiagnostic();
+    }, 100);
   };
 
   return (
