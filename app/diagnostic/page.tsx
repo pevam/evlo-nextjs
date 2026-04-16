@@ -10,6 +10,7 @@ import QRCodeVerify from '@/app/components/QRCodeVerify';
 import EVLOGradeBadge from '@/app/components/EVLOGradeBadge';
 import CarSelector from '@/app/components/CarSelector';
 import MarketPositionGauge from '@/app/components/MarketPositionGauge';
+import DiagnosticWizard from '@/app/components/DiagnosticWizard';
 import { EV_DATABASE, EVDatabaseEntry } from '@/app/data/ev-database';
 import { getMarketPosition, getPremiumBadgeText, type MarketPosition } from '@/app/utils/marketBenchmark';
 
@@ -543,6 +544,26 @@ export default function DiagnosticPage() {
     );
   }
 
+  const handleWizardComplete = (wizardData: any) => {
+    // Map wizard data to state
+    setCarYear(wizardData.carYear);
+    setCarKm(wizardData.carKm);
+    setCarVin(wizardData.carVin);
+    setMaxSoC(wizardData.maxSoC);
+    setMinSoC(wizardData.minSoC);
+    setChargeType(wizardData.chargeType);
+    setDcChargingPercent(wizardData.dcChargingPercent);
+    setDriveMode(wizardData.driveMode);
+    setSummerParking(wizardData.summerParking);
+    setWinterParking(wizardData.winterParking);
+    setClimateRegion(wizardData.climateRegion);
+    setAvgTemp(wizardData.avgTemp);
+    setHasHeatPump(wizardData.hasHeatPump);
+    
+    // Trigger calculation
+    calculateDiagnostic();
+  };
+
   return (
     <div className="evlo-page">
       <div className="evlo-wrapper">
@@ -552,170 +573,7 @@ export default function DiagnosticPage() {
             <span>analiza</span>
           </h2>
 
-            <div className="ai-scan-box">
-            <div className="ai-scan-title">EVLO AI Vision</div>
-            <div className="ai-scan-desc">Naloži sliko za avtomatski vnos podatkov</div>
-            <button className="ai-btn">Skeniraj</button>
-          </div>
-
-          <div className="form-group">
-            <label className="form-label">Model vozila</label>
-            <CarSelector value={selectedCar} onSelect={setSelectedCar} />
-          </div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">Letnik</label>
-              <input type="number" className="evlo-field" value={carYear} onChange={(e) => setCarYear(e.target.value)} />
-            </div>
-            <div>
-              <label className="form-label">Prevoženi km</label>
-              <input type="number" className="evlo-field" value={carKm} onChange={(e) => setCarKm(e.target.value)} />
-            </div>
-          </div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">VIN</label>
-              <input type="text" className="evlo-field" placeholder="VIN" value={carVin} onChange={(e) => setCarVin(e.target.value.toUpperCase())} />
-            </div>
-            <div>
-              <label className="form-label">Slika vozila</label>
-              <div className="file-upload-wrapper">
-                <div className="btn-file-upload">Naloži sliko</div>
-                <input 
-                  type="file" 
-                  accept="image/*"
-                  onChange={(e) => {
-                    if (e.target.files?.[0]) {
-                      const reader = new FileReader();
-                      reader.onload = (evt) => {
-                        if (evt.target?.result) {
-                          setCarImage(evt.target.result as string);
-                        }
-                      };
-                      reader.readAsDataURL(e.target.files[0]);
-                    }
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', margin: '20px 0', color: '#ccc' }}>--- Podrobna analiza ---</div>
-
-          <div className="evlo-grid-2" style={{ marginBottom: '15px' }}>
-            <label className="hw-toggle-box">
-              <span>Toplotna črpalka</span>
-              <input type="checkbox" checked={hasHeatPump} onChange={(e) => setHasHeatPump(e.target.checked)} />
-            </label>
-            <label className="hw-toggle-box">
-              <span>V2L</span>
-              <input type="checkbox" checked={hasV2L} onChange={(e) => setHasV2L(e.target.checked)} />
-            </label>
-          </div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">Polnjenje zgoraj (Max SoC)</label>
-              <select className="evlo-field" value={maxSoC} onChange={(e) => setMaxSoC(e.target.value)}>
-                <option value="0.95">70 - 80% (Brez stresa)</option>
-                <option value="1.10">90% (Zmerno)</option>
-                <option value="1.25">100% (Občasno polno)</option>
-                <option value="1.45">Vedno 100% (Kritično)</option>
-              </select>
-            </div>
-            <div>
-              <label className="form-label">Praznjenje spodaj (Min SoC)</label>
-              <select className="evlo-field" value={minSoC} onChange={(e) => setMinSoC(e.target.value)}>
-                <option value="0.95">Redko pod 20%</option>
-                <option value="1.10">Pogosto do 10%</option>
-                <option value="1.30">Večkrat do 0% (Deep cycle)</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">Vrsta polnilnic</label>
-              <select className="evlo-field" value={chargeType} onChange={(e) => setChargeType(e.target.value)}>
-                <option value="0.95">Počasno (AC do 11kW)</option>
-                <option value="1.15">Mešano (AC/DC)</option>
-                <option value="1.30">Hitro (DC do 100kW)</option>
-                <option value="1.50">Supercharge (DC 150kW+)</option>
-              </select>
-            </div>
-            <div>
-              <label className="form-label">Režim vožnje</label>
-              <select className="evlo-field" value={driveMode} onChange={(e) => setDriveMode(e.target.value)}>
-                <option value="0.95">Eco / Mestna vožnja</option>
-                <option value="1.05">Mešano (Lokalno/AC)</option>
-                <option value="1.25">Avtocesta (130km/h+)</option>
-                <option value="1.40">Športna / Dirkaška</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">Parkiranje poleti</label>
-              <select className="evlo-field" value={summerParking} onChange={(e) => setSummerParking(e.target.value)}>
-                <option value="0.95">Hladna garaža / Podzemna</option>
-                <option value="1.10">Nadstrešek (Senca)</option>
-                <option value="1.35">Na prostem (Sončna vročina)</option>
-              </select>
-            </div>
-            <div>
-              <label className="form-label">Parkiranje pozimi</label>
-              <select className="evlo-field" value={winterParking} onChange={(e) => setWinterParking(e.target.value)}>
-                <option value="0.95">Ogrevana garaža (&gt;15°C)</option>
-                <option value="1.10">Hladna garaža (5-10°C)</option>
-                <option value="1.25">Zunaj pod nadstreškom</option>
-                <option value="1.45">Zunaj na mrazu (pod 0°C)</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">Povprečna temperatura (°C)</label>
-              <input type="number" className="evlo-field" placeholder="npr. 15" value={avgTemp} onChange={(e) => setAvgTemp(e.target.value)} />
-            </div>
-            <div>
-              <label className="form-label">Povprečna višinska razlika (m)</label>
-              <input type="number" className="evlo-field" placeholder="npr. 100" value={avgElevation} onChange={(e) => setAvgElevation(e.target.value)} />
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', margin: '20px 0', color: '#ccc' }}>--- Klimatski in polnilni parametri (Phase 11) ---</div>
-
-          <div className="evlo-grid-2">
-            <div>
-              <label className="form-label">Podnebje (Regija)</label>
-              <select className="evlo-field" value={climateRegion} onChange={(e) => setClimateRegion(e.target.value)}>
-                <option value="moderate">Zmerno (Slovenija)</option>
-                <option value="hot">Vroče (Sredozemlje)</option>
-                <option value="cold">Hladno (Skandinavija)</option>
-              </select>
-            </div>
-            <div>
-              <label className="form-label">Delež DC Polnjenja: {dcChargingPercent}%</label>
-              <input 
-                type="range" 
-                className="evlo-field" 
-                min="0" 
-                max="100" 
-                value={dcChargingPercent} 
-                onChange={(e) => setDcChargingPercent(parseInt(e.target.value))}
-                style={{ 
-                  cursor: 'pointer',
-                  background: 'linear-gradient(90deg, rgb(0, 229, 142) 0%, rgb(184, 236, 63) 100%)'
-                }}
-              />
-            </div>
-          </div>
-
-          <button className="evlo-btn-pill" onClick={calculateDiagnostic}>Zagon Diagnostike</button>
+          <DiagnosticWizard onComplete={handleWizardComplete} />
         </div>
       </div>
     </div>
