@@ -278,8 +278,8 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div className="score-hero" style={{ display: 'flex', gap: '40px', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid rgb(0, 229, 142)' }}>
-              <svg width="180" height="180" viewBox="0 0 180 180" style={{ flexShrink: 0 }}>
+            <div className="score-hero" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid #10b981' }}>
+              <svg width="180" height="180" viewBox="0 0 180 180" style={{ flexShrink: 0, marginBottom: '20px' }}>
                 <defs>
                   <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="rgb(0, 229, 142)" />
@@ -296,8 +296,7 @@ export default function DiagnosticPage() {
                   strokeLinecap="round"
                   style={{ transition: 'stroke-dasharray 0.6s ease', transform: 'rotate(-90deg)', transformOrigin: '90px 90px' }}
                 />
-                <text x="90" y="85" fontSize="56" fontWeight="bold" textAnchor="middle" fill="#1e1e1e">{result.score}%</text>
-                <text x="90" y="110" fontSize="12" fontWeight="600" textAnchor="middle" fill="#888">ZDRAVJE</text>
+                <text x="90" y="100" fontSize="42" fontWeight="bold" textAnchor="middle" dominantBaseline="middle" fill="#1e1e1e">{result.score}%</text>
               </svg>
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: '600', marginBottom: '16px', color: '#1E1E1E', fontSize: '1rem' }}>EVLO Indeks zdravja (Certificiran SoH)</div>
@@ -313,7 +312,7 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid rgb(0, 229, 142)', marginBottom: '40px' }}>
+            <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid #10b981', marginBottom: '40px' }}>
               <div style={{ marginBottom: '25px' }}>
                 <div style={{ fontSize: '2rem', fontWeight: '700', color: '#1e1e1e', marginBottom: '10px' }}>Doseg {result.realRange} km</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '15px', fontWeight: '500' }}>Trenutna sposobnost glede na stanje baterije</div>
@@ -372,7 +371,7 @@ export default function DiagnosticPage() {
             {result.premiumBadge && (
               <div style={{
                 background: 'rgb(248, 249, 250)',
-                border: '2px solid rgb(16, 185, 129)',
+                border: '1.5px solid #10b981',
                 borderRadius: '12px',
                 padding: '20px',
                 marginBottom: '30px',
