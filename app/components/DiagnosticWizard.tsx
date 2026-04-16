@@ -59,13 +59,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
   });
 
   const handleNext = () => {
-    if (step === 1) {
-      if (!data.selectedCar) {
-        alert('Prosimo, izberi model vozila');
-        return;
-      }
-      setStep(step + 1);
-    } else if (step === 3) {
+    if (step === 3) {
       startLoading();
     } else {
       setStep(step + 1);
@@ -264,7 +258,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onClick={() => setData({ ...data, maxSoC: opt.value })}
                   style={{
                     padding: '12px',
-                    border: `2px solid ${data.maxSoC === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                    border: `2px solid ${data.maxSoC === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                     borderRadius: '8px',
                     cursor: 'pointer',
                     background: data.maxSoC === opt.value ? '#f0fdf4' : '#fff',
@@ -298,7 +292,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onClick={() => setData({ ...data, minSoC: opt.value })}
                   style={{
                     padding: '12px',
-                    border: `2px solid ${data.minSoC === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                    border: `2px solid ${data.minSoC === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                     borderRadius: '8px',
                     cursor: 'pointer',
                     background: data.minSoC === opt.value ? '#f0fdf4' : '#fff',
@@ -323,7 +317,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               {[
-                { value: '0.95', label: 'Domači AC (do 11kW)' },
+                { value: '0.95', label: 'Domački AC (do 11kW)' },
                 { value: '1.15', label: 'Mešano AC / DC' },
                 { value: '1.30', label: 'Hitri DC (do 100kW)' },
                 { value: '1.50', label: 'Supercharger / HPC' }
@@ -333,7 +327,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onClick={() => setData({ ...data, chargeType: opt.value })}
                   style={{
                     padding: '12px',
-                    border: `2px solid ${data.chargeType === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                    border: `2px solid ${data.chargeType === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                     borderRadius: '8px',
                     cursor: 'pointer',
                     background: data.chargeType === opt.value ? '#f0fdf4' : '#fff',
@@ -398,7 +392,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onClick={() => setData({ ...data, driveMode: opt.value })}
                   style={{
                     padding: '12px',
-                    border: `2px solid ${data.driveMode === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                    border: `2px solid ${data.driveMode === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                     borderRadius: '8px',
                     cursor: 'pointer',
                     background: data.driveMode === opt.value ? '#f0fdf4' : '#fff',
@@ -433,7 +427,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                     onClick={() => setData({ ...data, summerParking: opt.value })}
                     style={{
                       padding: '10px 12px',
-                      border: `2px solid ${data.summerParking === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                      border: `2px solid ${data.summerParking === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                       borderRadius: '6px',
                       cursor: 'pointer',
                       background: data.summerParking === opt.value ? '#f0fdf4' : '#fff',
@@ -463,7 +457,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                     onClick={() => setData({ ...data, winterParking: opt.value })}
                     style={{
                       padding: '10px 12px',
-                      border: `2px solid ${data.winterParking === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                      border: `2px solid ${data.winterParking === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                       borderRadius: '6px',
                       cursor: 'pointer',
                       background: data.winterParking === opt.value ? '#f0fdf4' : '#fff',
@@ -495,7 +489,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onClick={() => setData({ ...data, climateRegion: opt.value })}
                   style={{
                     padding: '10px 12px',
-                    border: `2px solid ${data.climateRegion === opt.value ? '#B8EC3F' : '#e9ecef'}`,
+                    border: `2px solid ${data.climateRegion === opt.value ? '#1a1a1a' : '#e9ecef'}`,
                     borderRadius: '6px',
                     cursor: 'pointer',
                     background: data.climateRegion === opt.value ? '#f0fdf4' : '#fff',
