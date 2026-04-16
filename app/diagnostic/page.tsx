@@ -278,7 +278,7 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div className="score-hero" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid #10b981' }}>
+            <div className="score-hero" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '40px', padding: '30px', background: '#f8f9fa', borderRadius: '16px', border: '1.5px solid #e9ecef' }}>
               <svg width="180" height="180" viewBox="0 0 180 180" style={{ flexShrink: 0, marginBottom: '20px' }}>
                 <defs>
                   <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -301,7 +301,7 @@ export default function DiagnosticPage() {
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: '600', marginBottom: '16px', color: '#1E1E1E', fontSize: '1rem' }}>EVLO Ocena zdravja baterije (model-based SoH)</div>
                 {parseFloat(result.score) >= 85 && (
-                  <p style={{ color: '#10b981', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Baterija ohranja {result.score}% prvotne kapacitete (razpon: {(parseFloat(result.score) - 2.8).toFixed(1)}–{(parseFloat(result.score) + 2.8).toFixed(1)}%). Degradacija je počasnejša od povprečja za ta model in starost.</p>
+                  <p style={{ color: '#1e1e1e', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Baterija ohranja {result.score}% prvotne kapacitete (razpon: {(parseFloat(result.score) - 2.8).toFixed(1)}–{(parseFloat(result.score) + 2.8).toFixed(1)}%). Degradacija je počasnejša od povprečja za ta model in starost.</p>
                 )}
                 {parseFloat(result.score) >= 70 && parseFloat(result.score) < 85 && (
                   <p style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '0px', fontSize: '0.9rem', lineHeight: '1.5' }}>Baterija ohranja {result.score}% prvotne kapacitete. Degradacija je v skladu s pričakovanji za ta model in starost.</p>
@@ -312,7 +312,7 @@ export default function DiagnosticPage() {
               </div>
             </div>
 
-            <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid #10b981', marginBottom: '40px' }}>
+            <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '16px', border: '1.5px solid #e9ecef', marginBottom: '40px' }}>
               <div style={{ marginBottom: '25px' }}>
                 <div style={{ fontSize: '2rem', fontWeight: '700', color: '#1e1e1e', marginBottom: '10px' }}>Doseg {result.realRange} km</div>
                 <div style={{ fontSize: '0.85rem', color: '#666', marginBottom: '15px', fontWeight: '500' }}>Ocenjeni doseg glede na stanje baterije</div>
@@ -371,7 +371,7 @@ export default function DiagnosticPage() {
             {result.premiumBadge && (
               <div style={{
                 background: 'rgb(248, 249, 250)',
-                border: '1.5px solid #10b981',
+                border: '1.5px solid #e9ecef',
                 borderRadius: '12px',
                 padding: '20px',
                 marginBottom: '30px',
