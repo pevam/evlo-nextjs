@@ -53,10 +53,10 @@ function OptionCard({
       onClick={onClick}
       style={{
         padding: '14px',
-        border: selected ? '1.5px solid #1a1a1a' : '1px solid #e0e0e0',
+        border: selected ? '1.5px solid #1a1a1a' : '1px solid #e9ecef',
         borderRadius: '8px',
         cursor: 'pointer',
-        background: selected ? '#1a1a1a' : '#fff',
+        background: selected ? '#1a1a1a' : '#f8f9fa',
         transition: 'border-color 0.15s, background 0.15s',
         gridColumn: fullWidth ? '1 / -1' : undefined,
         userSelect: 'none' as const
@@ -65,7 +65,7 @@ function OptionCard({
         if (!selected) (e.currentTarget as HTMLDivElement).style.borderColor = '#1a1a1a';
       }}
       onMouseLeave={e => {
-        if (!selected) (e.currentTarget as HTMLDivElement).style.borderColor = '#e0e0e0';
+        if (!selected) (e.currentTarget as HTMLDivElement).style.borderColor = '#e9ecef';
       }}
     >
       <div style={{ fontWeight: 700, color: selected ? '#fff' : '#1a1a1a', fontSize: '0.95rem' }}>
@@ -100,10 +100,10 @@ function PillBadge({
         alignItems: 'center',
         gap: '6px',
         padding: '8px 16px',
-        border: selected ? '1.5px solid #1a1a1a' : '1px solid #e0e0e0',
+        border: selected ? '1.5px solid #1a1a1a' : '1px solid #e9ecef',
         borderRadius: '200px',
         cursor: 'pointer',
-        background: selected ? '#1a1a1a' : '#fff',
+        background: selected ? '#1a1a1a' : '#f8f9fa',
         transition: 'border-color 0.15s, background 0.15s',
         userSelect: 'none' as const
       }}
@@ -111,7 +111,7 @@ function PillBadge({
         if (!selected) (e.currentTarget as HTMLDivElement).style.borderColor = '#1a1a1a';
       }}
       onMouseLeave={e => {
-        if (!selected) (e.currentTarget as HTMLDivElement).style.borderColor = '#e0e0e0';
+        if (!selected) (e.currentTarget as HTMLDivElement).style.borderColor = '#e9ecef';
       }}
     >
       <span style={{
@@ -183,10 +183,10 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
   const inputStyle: React.CSSProperties = {
     width: '100%',
     padding: '10px 14px',
-    border: '1px solid #e0e0e0',
+    border: '1px solid #e9ecef',
     borderRadius: '8px',
     fontSize: '0.95rem',
-    background: '#fff',
+    background: '#f8f9fa',
     color: '#1a1a1a',
     outline: 'none',
     boxSizing: 'border-box',
@@ -295,7 +295,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
       {step === 1 && (
         <div style={{ animation: 'evloFadeIn 0.25s ease' }}>
           <div style={{
-            background: '#f8f9fa',
+            background: '#ffffff',
             border: '1.5px solid #e9ecef',
             borderRadius: '16px',
             padding: '30px',
@@ -329,7 +329,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onChange={e => setData({ ...data, carYear: e.target.value })}
                   style={inputStyle}
                   onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#1a1a1a'}
-                  onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e0e0e0'}
+                  onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e9ecef'}
                 />
               </Field>
               <Field label="Prevoženi km">
@@ -340,7 +340,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onChange={e => setData({ ...data, carKm: e.target.value })}
                   style={inputStyle}
                   onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#1a1a1a'}
-                  onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e0e0e0'}
+                  onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e9ecef'}
                 />
               </Field>
             </div>
@@ -353,7 +353,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                 onChange={e => setData({ ...data, carVin: e.target.value.toUpperCase() })}
                 style={inputStyle}
                 onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#1a1a1a'}
-                onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e0e0e0'}
+                onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e9ecef'}
               />
             </Field>
           </div>
@@ -364,7 +364,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
       {step === 2 && (
         <div style={{ animation: 'evloFadeIn 0.25s ease' }}>
           <div style={{
-            background: '#f8f9fa',
+            background: '#ffffff',
             border: '1.5px solid #e9ecef',
             borderRadius: '16px',
             padding: '30px',
@@ -535,7 +535,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
       {step === 3 && (
         <div style={{ animation: 'evloFadeIn 0.25s ease' }}>
           <div style={{
-            background: '#f8f9fa',
+            background: '#ffffff',
             border: '1.5px solid #e9ecef',
             borderRadius: '16px',
             padding: '30px',
@@ -652,7 +652,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
                   onChange={e => setData({ ...data, avgTemp: e.target.value })}
                   style={inputStyle}
                   onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#1a1a1a'}
-                  onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e0e0e0'}
+                  onBlur={e => (e.target as HTMLInputElement).style.borderColor = '#e9ecef'}
                 />
               </Field>
               <div>
