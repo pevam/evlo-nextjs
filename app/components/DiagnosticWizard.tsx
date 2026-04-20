@@ -256,47 +256,39 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
   return (
     <div style={{ fontFamily: "'Gabarito', sans-serif" }}>
 
-      {/* Stepper */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', marginBottom: '40px' }}>
-        {[1, 2, 3].map((s, i) => (
-          <div key={s} style={{ display: 'flex', alignItems: 'center', flex: i < 2 ? 1 : 0 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-              <div style={{
-                width: '36px',
-                height: '36px',
-                borderRadius: '50%',
-                background: s < step ? '#1a1a1a' : s === step ? '#B8EC3F' : '#fff',
-                border: s === step ? 'none' : s < step ? 'none' : '1px solid #ddd',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: s < step ? '#fff' : s === step ? '#1a1a1a' : '#888',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                flexShrink: 0
-              }}>
-                {s < step ? '✓' : s}
-              </div>
-              <span style={{
-                fontSize: '12px',
-                color: s === step ? '#1a1a1a' : '#888',
-                fontWeight: s === step ? 500 : 400,
-                whiteSpace: 'nowrap'
-              }}>
-                {STEP_LABELS[s - 1]}
-              </span>
-            </div>
-            {i < 2 && (
-              <div style={{
-                flex: 1,
-                height: '1px',
-                background: s < step ? '#1a1a1a' : '#ddd',
-                margin: '0 12px',
-                marginBottom: '22px'
-              }} />
-            )}
+      {/* Modern Progress Bar Stepper */}
+      <div style={{ marginBottom: '36px' }}>
+        {/* Labels row */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', position: 'relative' }}>
+          <div style={{ position: 'absolute', left: '16%', transform: 'translateX(-50%)' }}>
+            <span style={{ fontSize: '12px', color: step >= 1 ? '#1a1a1a' : '#888', fontWeight: step === 1 ? 500 : 400 }}>
+              Vozilo
+            </span>
           </div>
-        ))}
+          <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+            <span style={{ fontSize: '12px', color: step >= 2 ? '#1a1a1a' : '#888', fontWeight: step === 2 ? 500 : 400 }}>
+              Polnjenje
+            </span>
+          </div>
+          <div style={{ position: 'absolute', left: '84%', transform: 'translateX(-50%)' }}>
+            <span style={{ fontSize: '12px', color: step >= 3 ? '#1a1a1a' : '#888', fontWeight: step === 3 ? 500 : 400 }}>
+              Okolje
+            </span>
+          </div>
+          <div style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#888' }}>
+            {step} / 3
+          </div>
+        </div>
+        {/* Track */}
+        <div style={{ height: '4px', background: '#e9ecef', borderRadius: '200px', overflow: 'hidden', marginTop: '20px' }}>
+          <div style={{
+            height: '100%',
+            background: '#1a1a1a',
+            borderRadius: '200px',
+            width: step === 1 ? '33%' : step === 2 ? '66%' : '100%',
+            transition: 'width 0.3s ease'
+          }} />
+        </div>
       </div>
 
       {/* STEP 1 — Vozilo */}
@@ -304,7 +296,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
         <div style={{ animation: 'evloFadeIn 0.25s ease' }}>
           <div style={{
             background: '#f8f9fa',
-            border: '1.5px solid #10B981',
+            border: '1.5px solid #e9ecef',
             borderRadius: '16px',
             padding: '30px',
             display: 'flex',
@@ -373,7 +365,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
         <div style={{ animation: 'evloFadeIn 0.25s ease' }}>
           <div style={{
             background: '#f8f9fa',
-            border: '1.5px solid #10B981',
+            border: '1.5px solid #e9ecef',
             borderRadius: '16px',
             padding: '30px',
             display: 'flex',
@@ -544,7 +536,7 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
         <div style={{ animation: 'evloFadeIn 0.25s ease' }}>
           <div style={{
             background: '#f8f9fa',
-            border: '1.5px solid #10B981',
+            border: '1.5px solid #e9ecef',
             borderRadius: '16px',
             padding: '30px',
             display: 'flex',
@@ -696,10 +688,10 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
               fontFamily: 'inherit',
               transition: 'background 0.15s'
             }}
-            onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.background = '#f8f9fa'}
+            onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.background = '#f0f0f0'}
             onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.background = 'transparent'}
           >
-            ← Nazaj
+            Nazaj
           </button>
         )}
         <button
@@ -714,12 +706,12 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
             fontWeight: 700,
             fontSize: '0.95rem',
             fontFamily: 'inherit',
-            transition: 'opacity 0.15s'
+            transition: 'background 0.15s'
           }}
-          onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.opacity = '0.85'}
-          onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.opacity = '1'}
+          onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.background = '#000000'}
+          onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.background = '#1a1a1a'}
         >
-          {step === 3 ? 'Zaženi diagnostiko →' : 'Naprej →'}
+          {step === 3 ? 'Zaženi diagnostiko' : 'Naprej'}
         </button>
       </div>
 
