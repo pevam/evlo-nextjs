@@ -253,29 +253,31 @@ export default function DiagnosticWizard({ onComplete }: DiagnosticWizardProps) 
     );
   }
 
+  const gabarito = "'__Gabarito_2d3e63', '__Gabarito_Fallback_2d3e63', sans-serif";
+
   return (
-    <div style={{ fontFamily: "'Gabarito', sans-serif" }}>
+    <div style={{ fontFamily: gabarito }}>
 
       {/* Modern Progress Bar Stepper */}
       <div style={{ marginBottom: '36px' }}>
         {/* Labels row */}
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', position: 'relative' }}>
           <div style={{ position: 'absolute', left: '16%', transform: 'translateX(-50%)' }}>
-            <span style={{ fontSize: '12px', color: step >= 1 ? '#1a1a1a' : '#888', fontWeight: step === 1 ? 500 : 400 }}>
+            <span style={{ fontSize: '12px', color: step >= 1 ? '#1a1a1a' : '#888', fontWeight: step === 1 ? 500 : 400, fontFamily: gabarito }}>
               Vozilo
             </span>
           </div>
           <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-            <span style={{ fontSize: '12px', color: step >= 2 ? '#1a1a1a' : '#888', fontWeight: step === 2 ? 500 : 400 }}>
+            <span style={{ fontSize: '12px', color: step >= 2 ? '#1a1a1a' : '#888', fontWeight: step === 2 ? 500 : 400, fontFamily: gabarito }}>
               Polnjenje
             </span>
           </div>
           <div style={{ position: 'absolute', left: '84%', transform: 'translateX(-50%)' }}>
-            <span style={{ fontSize: '12px', color: step >= 3 ? '#1a1a1a' : '#888', fontWeight: step === 3 ? 500 : 400 }}>
+            <span style={{ fontSize: '12px', color: step >= 3 ? '#1a1a1a' : '#888', fontWeight: step === 3 ? 500 : 400, fontFamily: gabarito }}>
               Okolje
             </span>
           </div>
-          <div style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#888' }}>
+          <div style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#888', fontFamily: gabarito }}>
             {step} / 3
           </div>
         </div>
