@@ -111,12 +111,12 @@ export default function DiagnosticPage() {
 
   );
 
-  const calculateDiagnostic = () => {
-    if (!selectedCar) {
+  const calculateDiagnostic = (carOverride?: EVDatabaseEntry | null) => {
+    const car = carOverride ?? selectedCar;
+    if (!car) {
       alert("Prosimo, izberi model vozila");
       return;
     }
-    const car = selectedCar;
 
     const year = parseInt(carYear) || 2022;
     const km = parseFloat(carKm) || 0;
@@ -561,14 +561,8 @@ export default function DiagnosticPage() {
     setAvgTemp(wizardData.avgTemp);
     setHasHeatPump(wizardData.hasHeatPump);
     
-    // Trigger calculation after state is updated with longer delay
-    setTimeout(() => {
-      if (!wizardData.selectedCar) {
-        alert("Prosimo, izberi model vozila");
-        return;
-      }
-      calculateDiagnostic();
-    }, 200);
+    // Pass car directly to avoid React async state timing issue
+    calculateDiagnostic(wizardData.selectedCar);
   };
 
   return (
